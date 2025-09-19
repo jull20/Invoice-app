@@ -1,0 +1,734 @@
+@font-face {
+  font-family: "League Spartan";
+  src: url("../../assets/font/LeagueSpartan-VariableFont_wght.ttf");
+}
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.changeTheme-btn path {
+  transition: 500ms;
+}
+.changeTheme-btn:hover path {
+  fill: #DFE3FA;
+}
+
+.dropDown-btn {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 14px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  transition: color 500ms;
+}
+.dropDown-btn_light {
+  color: #0C0E16;
+}
+.dropDown-btn_dark {
+  color: #FFFFFF;
+}
+.dropDown-btn::after {
+  content: "";
+  display: block;
+  background-image: url("../../assets/img/icon-arrow-down.svg");
+  background-repeat: no-repeat;
+  width: 10px;
+  height: 7px;
+  transition: transform 500ms;
+}
+.dropDown-btn[data-menu-visible=true]::after {
+  transform: rotate(180deg);
+}
+
+.addItem-btn {
+  width: 100%;
+  height: 4.8rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  border-radius: 2.4rem;
+  transition: background-color 500ms, color 500ms;
+}
+.addItem-btn_theme_light {
+  background-color: #F9FAFE;
+  color: #7E88C3;
+}
+.addItem-btn_theme_dark {
+  background-color: #252945;
+  color: #DFE3FA;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #7C5DFA;
+  border-radius: 0 2rem 2rem 0;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.logo img {
+  aspect-ratio: 1/1;
+  z-index: 100;
+}
+@media screen and (orientation: landscape) {
+  .logo {
+    width: 100%;
+  }
+  .logo img {
+    width: 38%;
+  }
+}
+@media screen and (orientation: portrait) {
+  .logo {
+    height: 100%;
+  }
+  .logo img {
+    height: 38%;
+  }
+}
+.logo:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: #9277FF;
+  border-radius: 2rem 0 0 2rem;
+}
+
+.dropDown {
+  position: relative;
+}
+
+.dropDown__menu {
+  position: absolute;
+  padding: 2.4rem;
+  width: 19.2rem;
+  border-radius: 0.8rem;
+  display: block;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 500ms, background-color 500ms, box-shadow 500ms;
+  transition: all 500ms;
+}
+.dropDown__menu_theme_light {
+  background-color: #FFFFFF;
+  box-shadow: 0 1rem 2rem 0 rgba(72, 84, 159, 0.25);
+}
+.dropDown__menu_theme_dark {
+  background-color: #252945;
+  box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.25);
+}
+.dropDown__menu[data-menu-visible=false] {
+  opacity: 0;
+  transition: visibility 500ms, opacity 500ms;
+  height: 0;
+  padding: 0;
+}
+
+.myModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  background-color: rgba(0, 0, 0, 0.486);
+  z-index: 100;
+  opacity: 1;
+  transition: all 500ms;
+  overflow-y: auto;
+}
+.myModal[data-visible=false] {
+  opacity: 0;
+  width: 0;
+}
+
+.myModal__content {
+  width: clamp(40rem, 80.2vw, 61.6rem);
+  border-radius: 0 2rem 2rem 0;
+  height: 100%;
+  padding: clamp(2.4rem, 7vw, 5.6rem);
+  transition: background-color 500ms;
+}
+@media screen and (max-width: 450px) {
+  .myModal__content {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+.myModal__content_theme_light {
+  background-color: #FFFFFF;
+}
+.myModal__content_theme_dark {
+  background-color: #141625;
+}
+
+.myInput {
+  height: 4.8rem;
+  width: 100%;
+  border: 0.1rem solid transparent;
+  transition: all 500ms;
+  border-radius: 0.4rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  padding: 0 10%;
+}
+.myInput_theme_light {
+  border-color: #DFE3FA;
+  background-color: #FFFFFF;
+  color: #0C0E16;
+}
+.myInput_theme_dark {
+  background-color: #1E2139;
+  border-color: #252945;
+  color: #FFFFFF;
+}
+
+.myLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.9rem 0;
+}
+
+.myLabel__name {
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  transition: color 500ms;
+}
+.myLabel__name_theme_light {
+  color: #7E88C3;
+}
+.myLabel__name_theme_dark {
+  color: #DFE3FA;
+}
+
+.mySelect {
+  height: 4.8rem;
+  width: 100%;
+  border: 0.1rem solid transparent;
+  transition: all 500ms;
+  border-radius: 0.4rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  padding: 0 2rem;
+}
+.mySelect_theme_light, .mySelect_theme_light:has(option) {
+  border-color: #DFE3FA;
+  background-color: #FFFFFF;
+  color: #0C0E16;
+}
+.mySelect_theme_dark, .mySelect_theme_dark:has(option) {
+  background-color: #1E2139;
+  border-color: #252945;
+  color: #FFFFFF;
+}
+
+select,
+::picker(select),
+option {
+  appearance: none;
+}
+
+select::picker-icon {
+  color: #999999;
+  transition: 0.4s rotate;
+}
+
+select:open::picker-icon {
+  rotate: 180deg;
+}
+
+::picker(select) {
+  border: none;
+}
+
+option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  border: 2px solid #1E2139;
+  background: red;
+  padding: 10px;
+  transition: 0.4s;
+}
+
+option:first-of-type {
+  border-radius: 8px 8px 0 0;
+}
+
+option:last-of-type {
+  border-radius: 0 0 8px 8px;
+}
+
+option:not(option:last-of-type) {
+  border-bottom: none;
+}
+
+option:hover,
+option:focus {
+  background: plum;
+}
+
+option .icon {
+  font-size: 1.6rem;
+  text-box: trim-both cap alphabetic;
+}
+
+fieldset {
+  width: 100%;
+  border: none;
+}
+
+.invoiceForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5rem 0;
+  height: 100%;
+  overflow-y: scroll;
+  transition: scrollbar-color 500ms, scrollbar-width 500ms;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+.invoiceForm_theme_light {
+  scrollbar-color: #DFE3FA transparent;
+}
+.invoiceForm_theme_dark {
+  scrollbar-color: #252945 transparent;
+}
+
+.invoiceForm__bill-from {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2.4rem;
+}
+.invoiceForm__bill-from .addressFrom {
+  grid-row: 1/2;
+  grid-column: 1/4;
+}
+.invoiceForm__bill-from .cityFrom {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+.invoiceForm__bill-from .postCodeFrom {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+.invoiceForm__bill-from .countryFrom {
+  grid-row: 2/3;
+  grid-column: 3/4;
+}
+
+.invoiceForm__partName {
+  margin-bottom: 2.4rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  color: #7C5DFA;
+}
+.invoiceForm__partName-itemList {
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  letter-spacing: -0.038rem;
+  color: #777F98;
+}
+
+.invoiceForm__bill-to {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2.4rem;
+}
+.invoiceForm__bill-to .fullName {
+  grid-row: 1/2;
+  grid-column: 1/4;
+}
+.invoiceForm__bill-to .email {
+  grid-row: 2/3;
+  grid-column: 1/4;
+}
+.invoiceForm__bill-to .addressTo {
+  grid-row: 3/4;
+  grid-column: 1/4;
+}
+.invoiceForm__bill-to .cityTo {
+  grid-row: 4/5;
+  grid-column: 1/2;
+}
+.invoiceForm__bill-to .postCodeTo {
+  grid-row: 4/5;
+  grid-column: 2/3;
+}
+.invoiceForm__bill-to .countryTo {
+  grid-row: 4/5;
+  grid-column: 3/4;
+}
+
+.invoiceForm__date-descripton {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2.4rem;
+}
+.invoiceForm__date-descripton .invoiceDate {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+.invoiceForm__date-descripton .paymentTerms {
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+.invoiceForm__date-descripton .projectDescription {
+  grid-row: 2/3;
+  grid-column: 1/3;
+}
+
+.invoiceForm__itemList {
+  display: grid;
+  gap: 0 2.5rem;
+}
+
+.invoiceForm__partName-itemList {
+  margin-bottom: 1.5rem;
+}
+
+.header {
+  flex-shrink: 0;
+  transition: background-color 500ms;
+}
+@media screen and (orientation: landscape) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 10.3rem;
+    height: 100%;
+    border-radius: 0 2rem 2rem 0;
+  }
+}
+@media screen and (orientation: portrait) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: clamp(7rem, 8vh, 8rem);
+    width: 100%;
+    border-radius: 0;
+  }
+}
+.header_theme_light {
+  background-color: #373B53;
+}
+.header_theme_dark {
+  background-color: #1E2139;
+}
+
+.header__btn-avatar-wrapper {
+  gap: 3.7rem;
+}
+@media screen and (orientation: landscape) {
+  .header__btn-avatar-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (orientation: portrait) {
+  .header__btn-avatar-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.header__avatar-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+}
+@media screen and (orientation: landscape) {
+  .header__avatar-wrapper {
+    width: 100%;
+    border-top: 0.1rem solid #494E6E;
+  }
+}
+@media screen and (orientation: portrait) {
+  .header__avatar-wrapper {
+    height: 100%;
+    border-left: 0.1rem solid #494E6E;
+  }
+}
+
+.header__avatar-img {
+  width: clamp(3.2rem, 3vw, 4rem);
+  aspect-ratio: 1/1;
+}
+.header__avatar-img img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 100%;
+}
+
+.invoices {
+  width: 100%;
+  height: auto;
+  padding: 0 clamp(2.4rem, 6vw, 8rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: clamp(3.6rem, 5.7vh, 6.5rem);
+}
+@media screen and (min-width: 1024px) {
+  .invoices {
+    width: 62vw;
+    padding: 0;
+    max-width: 73rem;
+  }
+}
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+  .invoices {
+    margin-top: 8rem;
+  }
+}
+
+.invoicesHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.invoicesHeader__text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: clamp(0.3rem, 0.5vw, 0.6rem) 0;
+}
+
+.invoicesHeader__app-name {
+  font-weight: 700;
+  font-size: 3.6rem;
+  line-height: 3.3rem;
+  letter-spacing: -0.1rem;
+  transition: color 500ms;
+}
+.invoicesHeader__app-name_theme_light {
+  color: #0C0E16;
+}
+.invoicesHeader__app-name_theme_dark {
+  color: #FFFFFF;
+}
+
+.invoicesHeader__total-invoices {
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.01rem;
+  transition: color 500ms;
+}
+.invoicesHeader__total-invoices_theme_light {
+  color: #888EB0;
+}
+.invoicesHeader__total-invoices_theme_dark {
+  color: #DFE3FA;
+}
+.invoicesHeader__total-invoices .visibility {
+  display: inline;
+}
+@media screen and (max-width: 450px) {
+  .invoicesHeader__total-invoices .visibility {
+    display: none;
+  }
+}
+
+.itemList {
+  display: grid;
+  grid-template-columns: 14fr 3fr 6fr 2fr 1fr;
+  gap: 1.6rem 1.6rem;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas: "header-itemName header-quantity header-price header-totalPrice . " "item item item item item" "addItemBtn addItemBtn addItemBtn addItemBtn addItemBtn";
+}
+
+.itemList__header-itemName {
+  grid-area: header-itemName;
+}
+
+.itemList__header-quantity {
+  grid-area: header-quantity;
+}
+
+.itemList__header-price {
+  grid-area: header-price;
+}
+
+.itemList__header-totalPrice {
+  grid-area: header-totalPrice;
+}
+
+.addItem-btn {
+  grid-area: addItemBtn;
+}
+
+.itemList__header {
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  transition: color 500ms;
+}
+.itemList__header_theme_light {
+  color: #7E88C3;
+}
+.itemList__header_theme_dark {
+  color: #DFE3FA;
+}
+
+.itemList__items {
+  grid-area: item;
+  display: grid;
+  gap: 1.6rem 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 14fr 3fr 6fr 2fr 1fr;
+  gap: 1.6rem 1.6rem;
+}
+
+.item__totalPrice {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  transition: color 500ms;
+}
+.item__totalPrice_theme_light {
+  color: #888EB0;
+}
+.item__totalPrice_theme_dark {
+  color: #DFE3FA;
+}
+
+.invoiceList {
+  width: 100%;
+}
+
+.invoicesListItem {
+  width: 100%;
+  height: 7.2rem;
+  padding: 1.6rem 2.2rem 1.6rem 3.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, auto) 104px 10px;
+  align-items: center;
+  border-radius: 0.8rem;
+  transition: all 500ms;
+}
+.invoicesListItem_theme_light {
+  background-color: #FFFFFF;
+  box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
+}
+.invoicesListItem_theme_dark {
+  background-color: #1E2139;
+  box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "League Spartan";
+}
+
+.root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transition: background-color 500ms;
+}
+.root_theme_light {
+  background-color: #F8F8FB;
+}
+.root_theme_dark {
+  background-color: #141625;
+}
+@media screen and (orientation: landscape) {
+  .root {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+@media screen and (orientation: portrait) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-basis: 100%;
+  flex-grow: 0;
+}
+@media screen and (orientation: landscape) {
+  .main {
+    height: 100%;
+  }
+}
+@media screen and (orientation: portrait) {
+  .main {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=App.css.map */

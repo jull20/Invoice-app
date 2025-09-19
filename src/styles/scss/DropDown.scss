@@ -1,0 +1,35 @@
+.dropDown{
+    position: relative;
+}
+.dropDown__menu{
+    position: absolute;
+    padding: 2.4rem;
+    width: 19.2rem;
+    border-radius: .8rem;
+    &_theme_light{
+        background-color: $color-15;
+        box-shadow: 0 1rem 2rem 0 rgba(72, 84, 159, 0.25);
+    }
+    &_theme_dark{
+        background-color: $color-04;
+        box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.25);
+    }
+
+    display: block;
+    // visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, 
+                opacity $transition, 
+                background-color $transition,
+                box-shadow $transition;
+
+    transition: all $transition;
+
+    &[data-menu-visible = false]{
+        opacity: 0;
+        // visibility: hidden;
+        transition: visibility $transition, opacity $transition;
+        height: 0;
+        padding: 0;
+    }
+}

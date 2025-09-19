@@ -1,0 +1,15 @@
+.invoices{
+    width: 100%;
+    height: auto;
+    padding: 0 clamp(2.4rem, 6vw, 8rem);
+    @include flex(column, flex-start, center);
+    margin-top: clamp(3.6rem, 5.7vh, 6.5rem);
+    @media screen and (min-width: 1024px) {
+        @media screen and (orientation: landscape) {
+            margin-top: 8rem;
+        }
+        width: 62vw;
+        padding: 0;
+        max-width: 73rem;
+    }
+}
