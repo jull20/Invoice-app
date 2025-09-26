@@ -1,0 +1,18 @@
+@import '../../../shared/styles/design-system.scss';
+
+.item{
+    @include gridForItems;
+}
+.item .formField-total .formField__input{
+    @include flex(row, flex-start, center);
+    @include heading-s('min');
+    border: none;
+    padding: 0;
+    transition: color $transition;
+    &_theme_light{
+        color: $color-06;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+}

@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'League Spartan';
+    src: url('../assets/font/LeagueSpartan-VariableFont_wght.ttf');
+}
+
+$color-01: #7C5DFA;
+$color-02: #9277FF;
+$color-03: #1E2139;
+$color-04: #252945;
+$color-05: #DFE3FA;
+$color-06: #888EB0;
+$color-07: #7E88C3;
+$color-08: #0C0E16;
+$color-09: #EC5757;
+$color-10: #9277FF;
+$color-11: #F8F8FB;
+$color-12: #141625;
+$color-13: #373B53;
+$color-14: #494E6E;
+$color-15: #FFFFFF;
+$color-16: #777F98;
+$color-17: #F9FAFE;
+$color-18: #FF8F00;
+$color-19: #33D69F;
+
+$color-20: #ff91000d;
+$color-21: #33d6a00d;
+$color-22: #373b530d;
+$color-23: #e0e4fa0d;
+
+
+
+$transition: 500ms;
+$template-col: 14fr 3fr 6fr 2fr 1fr;
+// $template-col: 21.4rem 4.6rem 10rem auto 1.5rem;
+
+$bold: 700;
+$medium: 500;
+
+@mixin heading-l{
+    font-weight:    $bold;
+    font-size:      3.6rem;
+    line-height:    3.3rem;
+    letter-spacing: -.1rem;
+}
+@mixin heading-m{
+    font-weight:    $bold;
+    font-size:      2.4rem;
+    line-height:    2.2rem;
+    letter-spacing: -.075rem;
+}
+@mixin heading-ms{
+    font-weight:    $bold;
+    font-size:      1.8rem;
+    line-height:    3.2rem;
+    letter-spacing: -.038rem;
+}
+@mixin heading-s($flag){
+    font-weight:    $bold;
+    font-size:      1.5rem;
+    @if($flag == 'max'){ line-height: 2.4rem;}
+    @if($flag == 'min'){ line-height: 1.5rem;}
+    letter-spacing: -.025rem;
+}
+@mixin body($flag){
+    font-weight:    $medium;
+    font-size:      1.3rem;
+    @if($flag == 'max'){ 
+        line-height: 1.8rem;
+        letter-spacing: -.01rem;
+    }
+    @if($flag == 'min'){ 
+        line-height: 1.5rem;
+        letter-spacing: -.025rem;
+    }
+}
+@mixin flex($direction, $main-axis, $cross-axis){
+    display:         flex;
+    flex-direction:  $direction;
+    justify-content: $main-axis;
+    align-items:     $cross-axis;
+}
+
+@mixin gridForItems{
+    display: grid;
+    grid-template-columns: $template-col;
+    gap: 1.6rem 1.6rem;
+}

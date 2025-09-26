@@ -1,0 +1,45 @@
+@import '../../shared/styles/design-system.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    font-family: 'League Spartan';
+}
+.root{
+    width: 100vw;
+    height: 100vh;
+    // min-height: 100vh;
+    overflow: hidden;
+    
+    &_theme_light{
+        background-color: $color-11;
+    }
+    &_theme_dark{
+        background-color: $color-12;
+    }
+    transition: background-color $transition;
+
+    @media screen and (orientation: landscape) {
+        @include flex(row, flex-start, flex-start);
+    }
+    @media screen and (orientation: portrait) {
+        @include flex(column, flex-start, flex-start);
+    }
+}
+.main{
+    position: relative;
+    @include flex(column, flex-start, center);
+    flex-basis: 100%;
+    flex-grow: 0;
+    @media screen and (orientation: landscape) {
+        height: 100%;
+    }
+    @media screen and (orientation: portrait) {
+        width: 100%;
+    }
+
+}

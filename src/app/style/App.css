@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "League Spartan";
+  src: url("../assets/font/LeagueSpartan-VariableFont_wght.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "League Spartan";
+}
+
+.root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transition: background-color 500ms;
+}
+.root_theme_light {
+  background-color: #F8F8FB;
+}
+.root_theme_dark {
+  background-color: #141625;
+}
+@media screen and (orientation: landscape) {
+  .root {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+@media screen and (orientation: portrait) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-basis: 100%;
+  flex-grow: 0;
+}
+@media screen and (orientation: landscape) {
+  .main {
+    height: 100%;
+  }
+}
+@media screen and (orientation: portrait) {
+  .main {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=App.css.map */

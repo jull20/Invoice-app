@@ -1,0 +1,17 @@
+@import '../../styles/design-system.scss';
+
+.label{
+    @include flex(column, flex-start, flex-start);
+    gap: .9rem 0;
+    // flex-basis: 100%;
+}
+.label__name{
+    @include body('min');
+    transition: color $transition;
+    &_theme_light{
+        color: $color-07;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+}

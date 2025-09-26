@@ -1,0 +1,100 @@
+@import "../../styles/design-system.scss";
+
+.select{
+    height: 4.8rem;
+    width: 100%;
+    border: .1rem solid transparent;
+    transition: all $transition;
+    border-radius: .4rem;
+    @include heading-s('min');
+    padding: 0 2rem;
+    &_theme_light, &_theme_light:has(option){
+        border-color: $color-05;
+        background-color: $color-15;
+        color: $color-08;
+    }
+    &_theme_dark, &_theme_dark:has(option){
+        background-color: $color-03;
+        border-color: $color-04;
+        color: $color-15;
+    }
+    // &:hover,
+    // &:focus {
+    //     border-color: $color-04;
+    // }
+}
+
+// option {
+// //   display: flex;
+// //   justify-content: flex-start;
+// //   gap: 20px;
+
+//   border: none;
+// //   background: #eeeeee;
+//   padding: 10px;
+//   transition: 0.4s;
+// }
+
+// option:first-of-type {
+//   border-radius: 8px 8px 0 0;
+// }
+
+// option:last-of-type {
+//   border-radius: 0 0 8px 8px;
+// }
+
+select,
+::picker(select),
+option {
+  appearance: none;
+}
+// select {
+//   border: 2px solid #dddddd;
+//   background: #eeeeee;
+//   padding: 10px;
+//   transition: 0.4s;
+// }
+
+select::picker-icon {
+  color: #999999;
+  transition: 0.4s rotate;
+}
+select:open::picker-icon {
+  rotate: 180deg;
+}
+::picker(select) {
+  border: none;
+}
+option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+
+  border: 2px solid $color-03;
+  background: red;
+  padding: 10px;
+  transition: 0.4s;
+}
+option:first-of-type {
+  border-radius: 8px 8px 0 0;
+}
+
+option:last-of-type {
+  border-radius: 0 0 8px 8px;
+}
+
+option:not(option:last-of-type) {
+  border-bottom: none;
+}
+// option {
+//   background: blue;
+// }
+
+option:hover,
+option:focus {
+  background: plum;
+}
+option .icon {
+  font-size: 1.6rem;
+  text-box: trim-both cap alphabetic;
+}

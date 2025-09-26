@@ -1,0 +1,38 @@
+@import '../../../shared/styles/design-system.scss';
+
+.invoicesControlPanel{
+    width: 100%;
+    @include flex(row, space-between, center);
+
+}
+.invoicesControlPanel__text-block{
+    @include flex(column, flex-start, flex-start);
+    gap: clamp(.3rem, .5vw, .6rem) 0;
+
+}
+.invoicesControlPanel__app-name{
+    @include heading-l;
+    transition: color $transition;
+    &_theme_light{
+        color: $color-08;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+}
+.invoicesControlPanel__total-invoices{
+    @include body('max');
+    transition: color $transition;
+    &_theme_light{
+        color: $color-06;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+    & .visibility{
+        display: inline;
+        @media screen and (max-width: 450px) {
+            display: none;
+        }
+    }
+}

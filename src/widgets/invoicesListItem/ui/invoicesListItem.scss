@@ -1,0 +1,101 @@
+@import '../../../shared/styles/design-system.scss';
+
+.invoicesListItem{
+    width: 100%;
+    cursor: pointer;
+    border: .1rem solid transparent;
+    display: grid;
+    @media screen and (min-width:760px) {
+        padding: 1.6rem 2.2rem 1.6rem 3.2rem;
+        height: 7.2rem;
+        grid-template-columns: 15% 22% 25% 17% 10.4rem 2.4rem;
+        grid-template-areas: "id date name price status arrow";
+    }
+    @media screen and (max-width:760px) {
+        justify-items: center;
+        padding: 2.4rem;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+            "id name"
+            "date status"
+            "price status";
+        @media screen and (max-width:440px) {
+            justify-items: baseline;
+        }
+    }
+    align-items: center;
+    border-radius: .8rem;
+    transition: all $transition;
+    &_theme_light{
+        background-color: $color-15;
+        box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
+    }
+    &_theme_dark{
+        background-color: $color-03;
+        box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
+    }
+
+    &:hover{
+        border-color: $color-01;
+    }
+}
+.invoicesListItem__id{
+    grid-area: id;
+    transition: color $transition;
+    @include heading-s('min');
+    &_theme_light{
+        color: $color-08;
+        & span{
+            color: $color-07;
+        }
+    }
+    &_theme_dark{
+        color: $color-15;
+        & span{
+            color: $color-06;
+        }
+    }
+}
+.invoicesListItem__invoiceDate{
+    grid-area: date;
+    transition: color $transition;
+    @include body('min');
+    &_theme_light{
+        color: $color-06;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+}   
+.invoicesListItem__client-name{
+    grid-area: name;
+    transition: color $transition;
+    @include body('min');
+    &_theme_light{
+        color: $color-06;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+}
+.invoicesListItem__price{
+    grid-area: price;
+    transition: color $transition;
+    @include heading-s('max');
+    &_theme_light{
+        color: $color-08;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+}
+.invoicesListItem__status{
+    grid-area: status;
+}
+.invoicesListItem__arrow{
+    grid-area: arrow;
+    @include flex(row, flex-end, center);
+    @media screen and (max-width:760px) {
+        display: none;
+    }
+}

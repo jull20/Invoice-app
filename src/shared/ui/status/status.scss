@@ -1,0 +1,41 @@
+@import "../../styles/design-system.scss";
+
+.status{
+    width: 10.4rem;
+    height: 4rem;
+    border-radius: .6rem;
+    @include flex(row, center, center);
+    gap: 0 .8rem;
+    @include heading-s('min');
+    text-transform: capitalize;
+    transition: all $transition;
+    &-pending{
+        background-color: $color-20;
+        color: $color-18;
+        & .circleSvg{
+            fill: $color-18;
+        }
+    }
+    &-paid{
+        background-color: $color-21;
+        color: $color-19;
+        & .circleSvg{
+            fill: $color-19;
+        }
+    }
+    &-draft{
+        background-color: $color-22;
+        color: $color-13;
+        & .circleSvg{
+            transition: all $transition;
+            fill: $color-13;
+        }
+        &.status_theme_dark{
+            background-color: $color-23;
+            color: $color-05;
+            & .circleSvg{
+                fill: $color-05;
+            }
+        }
+    }
+}
