@@ -1,0 +1,155 @@
+@import '../../../shared/styles/design-system.scss';
+
+$padding-size: clamp(2.4rem, 7vw, 5.6rem);
+
+fieldset{
+    width: 100%;
+    border: none;
+}
+.invoiceForm{
+    width: 100%;
+    height: 100%;
+    @include flex(column, flex-start, center);
+    gap: 4.6rem 0;
+    padding-top: $padding-size;
+}
+.invoiceForm_form-type{
+    @include heading-m;
+    line-height: 3.2rem;
+    flex: 0 0 3.2rem;
+}
+.invoiceForm__form{
+    width: 100%;
+    height: 0;
+    @include flex(column, flex-start, center);
+    flex-grow: 1;
+    gap: 1rem 0;
+
+    transition: scrollbar-color $transition,            
+                scrollbar-width $transition;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    &_theme_light{
+        scrollbar-color: $color-05 transparent;
+    }
+    &_theme_dark{
+        scrollbar-color: $color-04 transparent;
+    }
+}
+.invoiceForm__fields{
+    @include flex(column, flex-start, center);
+    overflow-y: scroll;
+    gap: 5rem 0;
+    padding: 0 $padding-size;
+
+}
+.invoiceForm__controlBtn{
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 3.2rem;
+    border-radius: 0 2rem 2rem 0;
+    transition: all $transition;
+    &_theme_light{
+        background-color: $color-15;
+        box-shadow: 0 -7rem 20rem 7rem rgba(0, 0, 0, 0.1);
+    }
+    &_theme_dark{
+        background-color: $color-12;
+        box-shadow: 0 -7rem 11rem 7rem rgba(0, 0, 0, 0.3);
+    }    
+}
+.invoiceForm__bill-from{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:    repeat(2, 1fr);
+    gap: 2.4rem;
+
+    & .formField-streetFrom{
+        grid-row: 1/2;
+        grid-column: 1/4;    
+    }
+    & .formField-cityFrom{
+        grid-row: 2/3;
+        grid-column: 1/2; 
+    }
+    & .formField-postCodeFrom{
+        grid-row: 2/3;
+        grid-column: 2/3; 
+    }
+    & .formField-countryFrom{
+        grid-row: 2/3;
+        grid-column: 3/4; 
+    }
+    
+}
+.invoiceForm__partName{
+    margin-bottom: 2.4rem;
+    @include heading-s('min'); 
+    color: $color-01;
+    &-itemList{
+        @include heading-ms; 
+        color: $color-16;
+    }
+}
+.invoiceForm__bill-to{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:    repeat(4, 1fr);
+    gap: 2.4rem;
+
+    & .formField-name{
+        grid-row: 1/2;
+        grid-column: 1/4; 
+    }
+    & .formField-email{
+        grid-row: 2/3;
+        grid-column: 1/4; 
+    }
+    & .formField-streetTo{
+        grid-row: 3/4;
+        grid-column: 1/4; 
+    }
+    & .formField-cityTo{
+        grid-row: 4/5;
+        grid-column: 1/2; 
+    }
+    & .formField-postCodeTo{
+        grid-row: 4/5;
+        grid-column: 2/3; 
+    }
+    & .formField-countryTo{
+        grid-row: 4/5;
+        grid-column: 3/4; 
+    }
+
+}
+
+
+.invoiceForm__date-descripton{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows:    repeat(2, 1fr);
+    gap: 2.4rem;
+    & .formField-invoiceDate{
+        grid-row: 1/2;
+        grid-column: 1/2; 
+    }
+    & .formField-paymentTerms{
+        grid-row: 1/2;
+        grid-column: 2/3; 
+    }
+    & .formField-projectDescription{
+        grid-row: 2/3;
+        grid-column: 1/3; 
+    }
+}
+
+.invoiceForm__itemList{
+    display: grid;
+    gap: 0 2.5rem ;
+}
+.invoiceForm__partName-itemList{
+    margin-bottom: 1.5rem;
+}

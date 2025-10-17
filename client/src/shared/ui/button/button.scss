@@ -1,0 +1,81 @@
+@import '../../styles/design-system.scss';
+
+.customBtn{
+    height: 4.8rem;
+    cursor: pointer;
+    border: none;
+    padding: 0 2.4rem;
+    background-color: transparent;
+    border-radius: 2.4rem;
+    @include heading-s('min');
+    transition: all $transition, filter 300ms;
+}
+.button-1{ // purple button
+    background-color: $color-01;
+    color: $color-15;
+    &:hover{
+        background-color: $color-02;
+    }
+    &:active{
+        filter: brightness(50%);
+    }
+}
+.button-2{ // dark button in both themes
+    background-color: $color-13;
+    &_theme_light{
+        color: $color-06;
+        &:hover{
+            background-color: $color-08;
+        }
+    }
+    &_theme_dark{
+        color: $color-05;
+        &:hover{
+            background-color: $color-03;
+        }
+    }
+    &:active{
+        filter: brightness(50%);
+    }
+}
+.button-3{ // light button in both themes
+    background-color: $color-17;
+    color: $color-07;
+    &:hover{
+        background-color: $color-05;
+    }
+    &:active{
+        filter: brightness(95%);
+    }
+}
+.button-4{ // red button
+    background-color: $color-09;
+    color: $color-15;
+    &:hover{
+        background-color: $color-25;
+    }
+    &:active{
+        filter: brightness(65%);
+    }
+}
+.button-5{ // chameleon; a light and dark button in a light and dark theme, respectively
+    
+    &_theme_light{
+        background-color: $color-17;
+        color: $color-07;
+        &:hover{
+            background-color: $color-05;
+        }
+    }
+    &_theme_dark{
+        background-color: $color-04;
+        color: $color-05;
+        &:hover{
+            background-color: $color-15;
+            color: $color-07;
+        }
+    }
+    &:active{
+        filter: brightness(50%);
+    }
+}
