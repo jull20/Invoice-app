@@ -6,6 +6,7 @@ import { ItemList } from "./ItemList";
 import type { InvoiceType, ItemType } from "../../../shared/types/InvoiceType";
 import { useState, type FormEvent, type SyntheticEvent } from "react";
 import type { FormSavingModeType, InvoiceFormType, ValuesType } from "./FormTypes";
+import { create } from "../../../shared/api/fetch/fetch";
 
 // function useItems(): [ItemType[], (e: React.FormEvent)=>void, (removeId: number)=>void]
 // {
@@ -104,7 +105,6 @@ const initialValues: ValuesType = {
 export function InvoiceForm({addNewInvoice, initialInvoice, closeModal}: InvoiceFormType){
     const theme = getThemeContext();
     const formType = 'New Invoice';
-
     const billFrom_formFieldsInfo = [ 
         {
             fieldName: 'Street Address',
@@ -252,6 +252,7 @@ export function InvoiceForm({addNewInvoice, initialInvoice, closeModal}: Invoice
         }
     }   
     const handleSubmit = (values: ValuesType, formikHelpers: FormikHelpers<ValuesType>) => {
+        if(saveMode) create({...values, status: saveMode})
         addNewInvoice({...values, status: saveMode, id: '12345'})
         discardForm(formikHelpers.resetForm);
     }
