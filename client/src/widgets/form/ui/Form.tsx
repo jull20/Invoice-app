@@ -77,7 +77,7 @@ const validate = (values: ValuesType) => {
     }
     if(itemsErrors.length > 0) errors.items = itemsErrors
 
-    console.log(errors)
+    // console.log(errors)
     return errors;
 }
 
@@ -252,8 +252,9 @@ export function InvoiceForm({addNewInvoice, initialInvoice, closeModal}: Invoice
         }
     }   
     const handleSubmit = (values: ValuesType, formikHelpers: FormikHelpers<ValuesType>) => {
-        if(saveMode) create({...values, status: saveMode})
-        addNewInvoice({...values, status: saveMode, id: '12345'})
+        if(saveMode) {
+            create({...values, status: saveMode}, (invoice: InvoiceType) => addNewInvoice(invoice))
+        }
         discardForm(formikHelpers.resetForm);
     }
 

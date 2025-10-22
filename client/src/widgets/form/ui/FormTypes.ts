@@ -1,9 +1,9 @@
-import type { InvoiceType } from "../../../shared/types/InvoiceType"
+import type { FormType, InvoiceType } from "../../../shared/types/InvoiceType"
 
 export type InvoiceFormType = {
     addNewInvoice: (newInvoice: InvoiceType)=>void,
-    initialInvoice: InvoiceType,
+    initialInvoice: FormType,
     closeModal: () => void
 }
-export type ValuesType = Omit<InvoiceType, 'id' | 'status'>;
+export type ValuesType = Omit<FormType, 'status'>;
 export type FormSavingModeType = 'pending' | 'draft' | undefined

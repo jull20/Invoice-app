@@ -1,5 +1,5 @@
 export type InvoiceType = {
-    id: string,
+    id: string, //
     status: StatusType,
     billFrom: AddressType,
     billTo: {
@@ -8,9 +8,12 @@ export type InvoiceType = {
     } & AddressType,
     invoiceDate: string,
     paymentTerms: number,
+    paymentDue: string, //
     projectDescription: string,
+    amountDue: number, //
     items: ItemType[]
 }
+export type FormType = Omit<InvoiceType, 'id'|'paymentDue'|'amountDue'>
 
 type AddressType = {
     street: string,
@@ -28,3 +31,4 @@ export type ItemType = {
 }
 
 export type StatusType = 'pending' | 'paid' | 'draft';
+

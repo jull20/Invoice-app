@@ -1,4 +1,4 @@
-export type InvoiceType = {
+export type InvoiceType1 = {
     id: string,
     status: StatusType,
     billFrom: AddressType,
@@ -12,8 +12,8 @@ export type InvoiceType = {
     items: ItemType[]
 }
 
-export type InvoiceType2 = {
-    id: string,
+export type InvoiceType = {
+    id: string, //
     status: StatusType,
     billFrom: AddressType,
     billTo: {
@@ -21,9 +21,10 @@ export type InvoiceType2 = {
         email: string
     } & AddressType,
     invoiceDate: string,
-    paymentDue: number,
+    paymentTerms: number,
+    paymentDue: string, //
     projectDescription: string,
-    amountDue: number,
+    amountDue: number, //
     items: ItemType[]
 }
 
@@ -45,9 +46,6 @@ export type ItemType = {
 export type StatusType = 'pending' | 'paid' | 'draft';
 
 export type AbbreviatedInvoiceType = {
-    id: string,
-    status: StatusType,
-    name: string,
-    invoiceDate: string,
-}
+    name: string
+} & Pick<InvoiceType, 'id'|'status'|'paymentDue'|'amountDue'>
 export type NewInvoiceType = Omit<InvoiceType, 'id'>;

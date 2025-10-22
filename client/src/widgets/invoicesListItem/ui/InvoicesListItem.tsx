@@ -16,13 +16,13 @@ export function InvoicesListItem({invoiceData}: {invoiceData: InvoiceType}) {
                 <span>#</span>{invoiceData.id}
             </p>
             <p className={`invoicesListItem__invoiceDate invoicesListItem__invoiceDate_theme_${theme}`}>
-                Due  {invoiceData.invoiceDate}
+                Due  {invoiceData.paymentDue}
             </p>
             <p className={`invoicesListItem__client-name invoicesListItem__client-name_theme_${theme}`}>
                 {invoiceData.billTo.name}
                 </p>
             <p className={`invoicesListItem__price invoicesListItem__price_theme_${theme}`}>
-                £ {invoiceData.items[0]?.price ?? 0}
+                £ {invoiceData.amountDue ?? 0}
             </p>
             <div className="invoicesListItem__status"><Status statusType={invoiceData.status} /></div>
             <div className="invoicesListItem__arrow"><ArrowRightImgSvg/></div>

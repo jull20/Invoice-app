@@ -5,4 +5,5 @@ export {Modal} from "./modal/Modal"
 export {Select} from "./select/Select"
 export {Status} from "./status/Status"
 export {FormField} from "./formField/FormField"
+export {TableOfInvoiceItems} from './tableOfInvoiceItems/TableOfInvoiceItems'
 export * from "./svgImg/svgImgCode"
