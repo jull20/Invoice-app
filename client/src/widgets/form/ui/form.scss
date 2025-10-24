@@ -2,6 +2,16 @@
 
 $padding-size: clamp(2.4rem, 7vw, 5.6rem);
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
 fieldset{
     width: 100%;
     border: none;

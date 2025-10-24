@@ -1,9 +1,13 @@
 @import '../../../shared/styles/design-system.scss';
 
 .item{
-    @include gridForItems;
+    display: grid;
+    grid-template-columns: $template-col-5;
+    gap: 0 1.6rem;
 }
 .item .formField-total .formField__input{
+    background-color: transparent;
+
     @include flex(row, flex-start, center);
     @include heading-s('min');
     border: none;

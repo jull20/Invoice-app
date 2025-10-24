@@ -1,46 +1,41 @@
 @import '../../../shared/styles/design-system.scss';
 
 .itemList{
-    @include gridForItems;
+    display: grid;
+    gap: 1.6rem;
+    grid-template-columns: $template-col-5;
     grid-template-rows: repeat(3, auto);
     grid-template-areas:
-        "header-itemName header-quantity header-price header-totalPrice . "
-        "item item item item item"
-        "addItemBtn addItemBtn addItemBtn addItemBtn addItemBtn";
+    "table-header table-header table-header table-header table-header"
+    "item         item         item         item         item  "
+    "footer       footer       footer       footer       footer";
 }
-.itemList__header-itemName{
-    grid-area: header-itemName;
-}
-.itemList__header-quantity{
-    grid-area: header-quantity;
-
-}
-.itemList__header-price{
-    grid-area: header-price;
-}
-.itemList__header-totalPrice{
-    grid-area: header-totalPrice;
-}
-.addItemBtn{
-    grid-area: addItemBtn;
-}
-
-.itemList__header{
-    @include body('min');
-    transition: color $transition;
-    &_theme_light{
-        color: $color-07;
-    }
-    &_theme_dark{
-        color: $color-05;
-    }
-    @media screen and (max-width: 450px) {
-        display: none;
+.itemList__table-header{
+    grid-area: table-header;
+    width: 100%;
+    gap: 1.6rem;
+    display: grid;
+    grid-template-columns: $template-col-5;
+    &-item{
+        @include body('min');
+        transition: color $transition;
+        &_theme_light{
+            color: $color-07;
+        }
+        &_theme_dark{
+            color: $color-05;
+        }
+        @media screen and (max-width: 450px) {
+            display: none;
+        }
     }
 }
-.itemList__items{
+.itemList__table-items{
     grid-area: item;
     display: grid;
     gap: 1.6rem 0;
 }
+.itemList__table-footer{
+    grid-area: footer;
 
+}

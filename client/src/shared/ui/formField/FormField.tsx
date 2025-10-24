@@ -17,7 +17,7 @@ export function FormField({fieldName, fieldClass, fieldProps, options}: {fieldNa
                 fieldProps.as === 'select' && options 
                 ? <Field {...fieldProps}>
                     {
-                        options.map((option, index) => {
+                        options.map((option) => {
                             return <option key={option.value} value={option.value}>{option.name}</option>
                         })
                     }

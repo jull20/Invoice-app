@@ -9,23 +9,25 @@ export class InvoicesService {
 
   private generateId(){
     let id = '';
-    for(let i=0; i<2; i++){
-      id += String.fromCharCode(Math.floor(Math.random() * 26) + 97).toUpperCase();
-    }
-    for(let i=0; i<4; i++){
-      id += Math.floor(Math.random() * (9 - 0 + 1)) + 1;
-    }
+    do{
+      for(let i=0; i<2; i++){
+        id += String.fromCharCode(Math.floor(Math.random() * 26) + 97).toUpperCase();
+      }
+      for(let i=0; i<4; i++){
+        id += Math.floor(Math.random() * (9 - 0 + 1)) + 1;
+      }
+    }while(this.invoicesStorage.find(invoice => invoice.id === id) !== undefined)
     return id;
   }
-  private countPaymentDue(start: string, paymentTerms: number){
+  private countPaymentDue(start: string, paymentTerms: string){
     const startDate = new Date(start);
-    const timeDifference = paymentTerms * 1000 * 60 * 60 * 24;
+    const timeDifference = parseInt(paymentTerms) * 1000 * 60 * 60 * 24;
     const timeEnd = startDate.getTime() + timeDifference;
     const endDate = new Date(timeEnd)
     return endDate.toDateString()
   }
   private countAmountDue(items: ItemType[]){
-    let amount = 0;
+    let amount: number = 0;
     items.forEach(item => amount += item.total);
     return amount;
   }

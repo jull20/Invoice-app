@@ -1,5 +1,26 @@
 @import '../../../shared/styles/design-system.scss';
 
+@mixin text-light($flag){
+    transition: all $transition;
+    @include body($flag);
+    &_theme_light{
+        color: $color-07;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+}
+@mixin text-bold($flag){
+    transition: all $transition;
+    @include heading-s($flag);
+    &_theme_light{
+        color: $color-08;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+}
+
 .invoiceDetail{
     @include page-layout; 
     @include flex(column, flex-start, center);
@@ -30,8 +51,212 @@
     @include flex(row, center, center);
     gap: 0 .8rem;
 }
+
+
 .invoiceDetail__info{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, auto);
+    gap: 3.2rem 0;
+    grid-template-areas: 
+        "invoiceName . . billFrom"
+        "invoiceDate billTo email ."
+        "paymentDue  billTo email ."
+        "items items items items";
+
     @include block-appearance;
     width: 100%;
     padding: 3.2rem;
+    @media screen and (min-width:1024px){
+        padding: 4.8rem;
+    }
+    @media screen and (max-width:450px){
+        padding: 2.4rem;
+    }
+}
+
+.invoiceDetail__id-description-wrapper{
+    grid-area: invoiceName;
+    @include flex(column, flex-start, flex-start);
+    gap: 1rem 0;
+}
+.invoiceDetail__billFrom{
+    grid-area: billFrom;
+    @include flex(column, flex-start, flex-end);
+    gap: .5rem 0;
+}
+.invoiceDetail__date{
+    grid-area: invoiceDate;
+    @include flex(column, flex-start, flex-start);
+    gap: 1.3rem 0;
+}
+.invoiceDetail__paymentDue{
+    grid-area: paymentDue;
+    @include flex(column, flex-start, flex-start);
+    gap: 1.3rem 0;
+}
+.invoiceDetail__billTo-name-wrapper{
+    grid-area: billTo;
+    @include flex(column, space-between, flex-start);
+    gap: .7rem 0;
+}
+.invoiceDetail__email{
+    grid-area: email;
+    justify-self: self-end;
+    @include flex(column, flex-start, flex-start);
+    gap: 1.3rem 0;
+}
+.invoiceDetail__items{
+    grid-area: items;
+}
+
+
+
+.invoiceDetail__id{
+    @include id-appearance;
+    line-height: 2.4rem;
+}
+.invoiceDetail__projectDescription{
+    @include text-light('min');
+}
+.invoiceDetail__billFrom-street,
+.invoiceDetail__billTo-street{
+    @include text-light('max');
+}
+.invoiceDetail__billFrom-city,
+.invoiceDetail__billTo-city{
+    @include text-light('max');
+}
+.invoiceDetail__billFrom-postCard,
+.invoiceDetail__billTo-postCard{
+    @include text-light('max');
+}
+.invoiceDetail__billFrom-country,
+.invoiceDetail__billTo-country{
+    @include text-light('max');
+}
+.invoiceDetail__date-title{
+    @include text-light('min');
+}
+.invoiceDetail__date-value{
+    @include text-bold('max');
+}
+.invoiceDetail__paymentDue-title{
+    @include text-light('min');
+}
+.invoiceDetail__paymentDue-value{
+    @include text-bold('max');
+}
+.invoiceDetail__billTo-title{
+    @include text-light('min');
+}
+.invoiceDetail__name{
+    @include text-bold('max');
+}
+.invoiceDetail__email-title{
+    @include text-light('min');
+}
+.invoiceDetail__email-value{
+    @include text-bold('max');
+}
+
+
+
+.invoiceDetail__items{
+    width: 100%;
+    height: auto;
+}
+.invoiceDetail__table{
+    display: grid;
+    grid-template-columns: $template-col-4;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+            "table-header table-header table-header table-header"
+            "item         item         item         item        ";
+    border-radius: .8rem .8rem 0 0;
+    gap: 3.2rem 0;
+    padding: 3.2rem 3.2rem 0 3.2rem;
+    transition: all $transition;
+    &_theme_light{
+        background-color: $color-17;
+    }
+    &_theme_dark{
+        background-color: $color-04;
+    }
+    @media screen and (max-width: 450px) {
+        padding: 2.4rem 2.4rem 0 2.4rem;
+        gap: 2.4rem 0;
+    }
+
+}
+.invoiceDetail__table-header{
+    grid-area: table-header;
+    width: 100%;
+    display: grid;
+    grid-template-columns: $template-col-4;
+    &-item{
+        @include text-light('max');
+        @media screen and (max-width: 450px) {
+            display: none;
+        }
+        &-total{
+            justify-self: self-end;
+        }
+        &-price{
+            justify-self: self-end;
+        }
+        &-quantity{
+            justify-self: center;
+        }
+    }
+}
+.invoiceDetail__table-items{
+    grid-area: item;
+    display: grid;
+    gap: 3.2rem 0;
+    @media screen and (max-width: 450px) {
+        gap: 2.4rem 0;
+    }
+}
+.invoiceDetail__table-item{
+    display: grid;
+    grid-template-columns: $template-col-4;
+    @include text-bold('min');
+    transition: all $transition;
+    &-total{
+        justify-self: self-end;
+    }
+    &-price{
+        justify-self: self-end;
+    }
+    &-quantity{
+        justify-self: center;
+    }
+    &_theme_light{
+        .invoiceDetail__table-item-quantity,
+        .invoiceDetail__table-item-price{
+            color: $color-07;
+        }
+    }
+}
+.invoiceDetail__amount{
+    @include flex(row, space-between, center);
+    border-radius: 0 0 .8rem .8rem;
+    padding: 2.4rem 3.2rem;
+    transition: all $transition;
+    &_theme_light{
+        background-color: $color-13;
+    }
+    &_theme_dark{
+        background-color: $color-08;
+    }
+    &-title{
+        color: $color-15;
+        @include body('max')
+    }
+    &-value{
+        color: $color-15;
+        @include heading-m;
+        line-height: 3.2rem;
+    }   
 }

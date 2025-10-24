@@ -15,6 +15,6 @@ export class InvoicesController {
     return this.invoiceService.getAll();
   }
   @Get('invoices/:id') getOne(@Param('id') id: string){
-    return this.invoiceService.getOne(id);
+    return this.invoiceService.getOne(id); 
   }
 }

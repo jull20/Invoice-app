@@ -32,20 +32,7 @@
 }
 .invoicesListItem__id{
     grid-area: id;
-    transition: color $transition;
-    @include heading-s('min');
-    &_theme_light{
-        color: $color-08;
-        & span{
-            color: $color-07;
-        }
-    }
-    &_theme_dark{
-        color: $color-15;
-        & span{
-            color: $color-06;
-        }
-    }
+    @include id-appearance;
 }
 .invoicesListItem__invoiceDate{
     grid-area: date;

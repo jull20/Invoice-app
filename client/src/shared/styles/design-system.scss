@@ -28,12 +28,11 @@ $color-22: #373b530d;
 $color-23: #e0e4fa0d;
 $color-24: #858BB2;
 $color-25: #FF9797;
-
 $shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
 
 $transition: 500ms;
-$template-col: 14fr 3fr 6fr 2fr 1fr;
-// $template-col: 21.4rem 4.6rem 10rem auto 1.5rem;
+$template-col-4: 14fr 2fr 6fr 6fr;
+$template-col-5: 13fr 3fr 6fr 4fr 1fr;
 
 $bold: 700;
 $medium: 500;
@@ -82,12 +81,6 @@ $medium: 500;
     align-items:     $cross-axis;
 }
 
-@mixin gridForItems{
-    display: grid;
-    grid-template-columns: $template-col;
-    gap: 1.6rem 1.6rem;
-}
-
 @mixin page-layout{
     width: 100%;
     height: auto;
@@ -112,5 +105,21 @@ $medium: 500;
     }
     &_theme_dark{
         background-color: $color-03;
+    }
+}
+@mixin id-appearance{
+    transition: color $transition;
+    @include heading-s('min');
+    &_theme_light{
+        color: $color-08;
+        & span{
+            color: $color-07;
+        }
+    }
+    &_theme_dark{
+        color: $color-15;
+        & span{
+            color: $color-06;
+        }
     }
 }

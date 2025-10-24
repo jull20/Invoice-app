@@ -44,8 +44,8 @@ export class CreateInvoiceDTO{
     } & Address
     @IsString() @IsNotEmpty()
     invoiceDate: string
-    @IsNumber() @IsNotEmpty()
-    paymentTerms: number
+    @IsString() @IsNotEmpty()
+    paymentTerms: string
     @IsString() @IsNotEmpty()
     projectDescription: string
     @ArrayNotEmpty()

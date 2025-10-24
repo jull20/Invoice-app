@@ -4,36 +4,9 @@ import { Button, FormField } from "../../../shared/ui";
 import { getThemeContext } from "../../../shared/api";
 import { ItemList } from "./ItemList";
 import type { InvoiceType, ItemType } from "../../../shared/types/InvoiceType";
-import { useState, type FormEvent, type SyntheticEvent } from "react";
+import React, { useState, type FormEvent, type SyntheticEvent } from "react";
 import type { FormSavingModeType, InvoiceFormType, ValuesType } from "./FormTypes";
 import { create } from "../../../shared/api/fetch/fetch";
-
-// function useItems(): [ItemType[], (e: React.FormEvent)=>void, (removeId: number)=>void]
-// {
-//     const [items, setItems] = useState<ItemType[]>([]);
-
-//     const emptyItem: ItemType = {
-//         id:       0,
-//         name:     '', 
-//         quantity: 0,
-//         price:    0,
-//         total:    0
-//     }
-
-//     const addItem = (e: React.FormEvent) => {
-//         e.preventDefault();
-//         setItems([...items, {...emptyItem, id: Date.now()}]);
-//     }
-//     const removeItem = (removeId: number) => {
-//         setItems(items.filter(item => item.id !== removeId))
-//     }
-//     const editItem = (e: React.ChangeEvent, itemId: string) => {
-//         e.preventDefault();
-//         setItems([...items, {...emptyItem, id: Date.now()}]);
-//     }
-
-//     return [items, addItem, removeItem];
-// }
 
 const validate = (values: ValuesType) => {
     const errors: any = {};
@@ -76,7 +49,6 @@ const validate = (values: ValuesType) => {
         })
     }
     if(itemsErrors.length > 0) errors.items = itemsErrors
-
     // console.log(errors)
     return errors;
 }
@@ -97,7 +69,7 @@ const initialValues: ValuesType = {
         country: '',
     },
     invoiceDate: '',
-    paymentTerms: 1,
+    paymentTerms: '',
     projectDescription: '',
     items: []
 }

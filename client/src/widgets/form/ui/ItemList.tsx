@@ -1,24 +1,18 @@
-import "./itemList.scss"
-import type { ThemeType } from "../../../shared/types/ThemeTypes";
-import { getThemeContext } from "../../../shared/api";
-import { Button } from "../../../shared/ui";
+import { Button, TableHeader } from "../../../shared/ui";
 import Item from "./Item";
 import { FieldArray } from "formik";
 import type { ValuesType } from "./FormTypes";
+import './itemList.scss'
 
 export function ItemList({values}: {values: ValuesType}) {
-    const theme: ThemeType = getThemeContext();
     return (  
         <div className="itemList">
-            <p className={`itemList__header itemList__header_theme_${theme} itemList__header-itemName`}>  Item Name</p>
-            <p className={`itemList__header itemList__header_theme_${theme} itemList__header-quantity`}>  Qty.</p>
-            <p className={`itemList__header itemList__header_theme_${theme} itemList__header-price`}>     Price</p>
-            <p className={`itemList__header itemList__header_theme_${theme} itemList__header-totalPrice`}>Total</p>
+            <TableHeader className="itemList__table-header"/>
             <FieldArray
                 name="items"
                 render={arrayHelpers => (
                 <>
-                    <div className="itemList__items">
+                    <div className="itemList__table-items">
                         {
                             values.items.map((item, index) => (
                                 <Item 
@@ -31,7 +25,7 @@ export function ItemList({values}: {values: ValuesType}) {
                     <Button 
                         style="chameleon"
                         type="button" 
-                        className='addItemBtn'
+                        className='addItemBtn itemList__table-footer'
                         onClick={() => arrayHelpers.push({name: '', quantity: '', price: '', total: ''})}
                     >
                         + Add New Item
@@ -40,6 +34,5 @@ export function ItemList({values}: {values: ValuesType}) {
                 )}
             />
         </div>
-
     );
 }

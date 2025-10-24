@@ -7,7 +7,7 @@ export type InvoiceType = {
         email: string
     } & AddressType,
     invoiceDate: string,
-    paymentTerms: number,
+    paymentTerms: string,
     paymentDue: string, //
     projectDescription: string,
     amountDue: number, //

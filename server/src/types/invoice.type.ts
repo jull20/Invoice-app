@@ -1,17 +1,3 @@
-export type InvoiceType1 = {
-    id: string,
-    status: StatusType,
-    billFrom: AddressType,
-    billTo: {
-        name: string,
-        email: string
-    } & AddressType,
-    invoiceDate: string,
-    paymentTerms: number,
-    projectDescription: string,
-    items: ItemType[]
-}
-
 export type InvoiceType = {
     id: string, //
     status: StatusType,
@@ -21,7 +7,7 @@ export type InvoiceType = {
         email: string
     } & AddressType,
     invoiceDate: string,
-    paymentTerms: number,
+    paymentTerms: string,
     paymentDue: string, //
     projectDescription: string,
     amountDue: number, //

@@ -21,6 +21,9 @@ export function Button({children, style, ...props}: ButtonType){
             break;                        
         case 'chameleon':
             num = 5;
+            break;
+        case 'img':
+            num = 6;
             break;   
         case 'none':
             num = 0;

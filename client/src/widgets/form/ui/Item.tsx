@@ -14,15 +14,16 @@ function Item({index, removeItem}: {index: number, removeItem: ()=>void}) {
     const [total, setTotal] = useState({quan: 0, price: 0})
 
     const changeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTotal({...total, quan: parseInt(e.currentTarget.value)})
-        formikContext.setFieldValue(quantityField, e.currentTarget.value, false)
+        setTotal({...total, quan: parseFloat(e.currentTarget.value)})
+        formikContext.setFieldValue(quantityField, parseFloat(e.currentTarget.value), false)
     }
     const changePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTotal({...total, price: parseInt(e.currentTarget.value)})
-        formikContext.setFieldValue(priceField, e.currentTarget.value, false)
+        setTotal({...total, price: parseFloat(e.currentTarget.value)})
+        formikContext.setFieldValue(priceField, parseFloat(e.currentTarget.value), false)
     }
     useEffect(() => {
-        formikContext.setFieldValue(totalField, total.price*total.quan);
+        const totalPrice = (total.price*total.quan)
+        formikContext.setFieldValue(totalField, totalPrice);
     }, [total])
 
     const items_formFieldsInfo = [ 
@@ -53,7 +54,7 @@ function Item({index, removeItem}: {index: number, removeItem: ()=>void}) {
         fieldClass: 'price',
         fieldProps: {
             as:   '',
-            type: 'text' ,
+            type: 'number' ,
             name: priceField,
             min:  "0.01" ,
             step: "0.01",
@@ -78,7 +79,7 @@ function Item({index, removeItem}: {index: number, removeItem: ()=>void}) {
             {
                 items_formFieldsInfo.map(data => <FormField key={data.fieldClass} {...data}/>)
             }
-            <Button style="none" className='removeItem-btn' onClick={removeItem}>
+            <Button style="img" className='removeItem-btn' onClick={removeItem}>
                 <DeleteImgSvg />
             </Button>
         </div>
