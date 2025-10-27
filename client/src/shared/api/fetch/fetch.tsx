@@ -1,6 +1,6 @@
 import type { FormType, InvoiceType } from "../../types/InvoiceType";
 
-const SERVER_URL = 'http://localhost:5000';
+const SERVER_URL = 'http://localhost:8080';
 
 
 function isInvocieType(value: unknown): value is InvoiceType{

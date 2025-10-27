@@ -55,7 +55,7 @@ export function InvoicePage() {
                     <p className="controlPanel__status-title">Status</p>
                     <Status statusType={invoice?.status ?? 'pending'} />
                 </div>
-                <div className="controlPanel__controlBtns">
+                <div className={`controlPanel__controlBtns controlPanel__controlBtns_theme_${theme}`}>
                     <Button type='button' style="chameleon" onClick={handleEdit} >Edit</Button>
                     <Button type='button' style='red'      >Delete      </Button>
                     <Button type='button' style="purple"   >Mark as Paid</Button>

@@ -10,8 +10,10 @@ export class InvoicesService {
   private generateId(){
     let id = '';
     do{
-      for(let i=0; i<2; i++){
-        id += String.fromCharCode(Math.floor(Math.random() * 26) + 97).toUpperCase();
+      for (let i = 0; i < 2; i++) {
+        id += String.fromCharCode(
+          Math.floor(Math.random() * 26) + 97,
+        ).toUpperCase();
       }
       for(let i=0; i<4; i++){
         id += Math.floor(Math.random() * (9 - 0 + 1)) + 1;

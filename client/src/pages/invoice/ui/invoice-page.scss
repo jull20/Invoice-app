@@ -23,7 +23,7 @@
 
 .invoiceDetail{
     @include page-layout; 
-    @include flex(column, flex-start, center);
+    margin-bottom: 12rem;
     gap: 2.4rem 0;
 }
 .invoiceDetail__backBtn{
@@ -39,17 +39,31 @@
 .controlPanel__status{
     @include flex(row, flex-start, center);
     gap: 0 2rem;
-    @media screen and (max-width: 450px) {
-        @include flex(row, space-between, center);
+    @media screen and (max-width: 660px) {
+        width: 100%;
+        justify-content: space-between;
     }
-}
-.controlPanel__status-title{
-    @include body('min');
-    color: $color-24;
+    &-title{
+        @include body('min');
+        color: $color-24;
+    }
 }
 .controlPanel__controlBtns{
     @include flex(row, center, center);
     gap: 0 .8rem;
+    @media screen and (max-width:660px) {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 22px;
+        &_theme_light{
+            background-color: $color-15;
+        }
+        &_theme_dark{
+            background-color: $color-03;
+        }
+    }
 }
 
 
@@ -236,6 +250,35 @@
         .invoiceDetail__table-item-quantity,
         .invoiceDetail__table-item-price{
             color: $color-07;
+        }
+    }
+    @media screen and (max-width: 660px) {
+        grid-template-columns: min-content auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "name name total"
+                             "quantity price total";
+        gap: .8rem .4rem;
+        &-name{
+            justify-self: self-start;
+            grid-area: name;
+        }
+        &-total{
+            align-self: center;
+            justify-self: self-end;
+            grid-area: total;
+        }
+        &-price{
+            justify-self: self-start;
+            grid-area: price;
+            color: $color-06;
+            &::before{
+                content: 'x ';
+            }
+        }
+        &-quantity{
+            grid-area: quantity;
+            justify-self: self-start;
+            color: $color-06;
         }
     }
 }

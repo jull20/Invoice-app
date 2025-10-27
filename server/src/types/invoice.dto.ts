@@ -1,8 +1,14 @@
-import { ArrayNotEmpty, IsIn, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
-import type { StatusType } from "./invoice.type";
+import {
+  ArrayNotEmpty,
+  IsIn,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
+import type { StatusType } from './invoice.type';
 
-
-class Address{
+class Address {
     @IsString() @IsNotEmpty()
     name: string
     @IsString() @IsNotEmpty()
@@ -16,7 +22,7 @@ class Address{
     @IsString() @IsNotEmpty()
     country: string
 }
-class Item{
+class Item {
     @IsNumber() @IsNotEmpty()
     id: number
     @IsString() @IsNotEmpty()
@@ -29,7 +35,7 @@ class Item{
     total: number
 }
 
-export class CreateInvoiceDTO{
+export class CreateInvoiceDTO {
     @IsNotEmpty()
     @IsIn(['pending', 'paid', 'draft'], {
         message: 'invalid status value'
