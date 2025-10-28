@@ -43,7 +43,7 @@ const emptyInvoice: FormType = {
         country:  ''
     },
     invoiceDate:  '',
-    paymentTerms: 0,
+    paymentTerms: '',
     projectDescription: '',
     items: []
 }

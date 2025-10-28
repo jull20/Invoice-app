@@ -23,12 +23,34 @@
 
 .invoiceDetail{
     @include page-layout; 
-    margin-bottom: 12rem;
+    margin-top: clamp(3.6rem, 6.7vw, 6.5rem);
     gap: 2.4rem 0;
+    @media screen and (max-width: 660px){
+        margin-bottom: 12rem;
+    }
 }
 .invoiceDetail__backBtn{
     width: 100%;
     margin-bottom: .7rem;
+    &-content-wrapper{
+        @include flex(row, flex-start, center);
+        gap: 0 2.4rem;
+        &:active{
+            filter: brightness(50%);
+        }
+    }
+    &-content-name{
+        transition: all $transition;
+        &_theme_light{
+            color: $color-08;
+        }
+        &_theme_dark{
+            color: $color-15;
+        }
+        &:hover{
+            color: $color-07;
+        }
+    }
 }
 .controlPanel{
     @include block-appearance;
@@ -56,7 +78,8 @@
         left: 0;
         bottom: 0;
         width: 100%;
-        padding: 22px;
+        padding: 2.2rem $pageLayout-padding;
+        transition: all $transition;
         &_theme_light{
             background-color: $color-15;
         }
@@ -73,7 +96,7 @@
     grid-template-rows: repeat(4, auto);
     gap: 3.2rem 0;
     grid-template-areas: 
-        "invoiceName . . billFrom"
+        "invoiceName invoiceName billFrom billFrom"
         "invoiceDate billTo email ."
         "paymentDue  billTo email ."
         "items items items items";
@@ -87,6 +110,17 @@
     @media screen and (max-width:450px){
         padding: 2.4rem;
     }
+    @media screen and (max-width: 550px) {
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(5, auto);
+        grid-template-areas: 
+            "invoiceName ."
+            "billFrom    ."
+            "invoiceDate billTo"
+            "paymentDue  billTo"
+            "email       ."
+            "items items ";
+    }
 }
 
 .invoiceDetail__id-description-wrapper{
@@ -98,6 +132,9 @@
     grid-area: billFrom;
     @include flex(column, flex-start, flex-end);
     gap: .5rem 0;
+    @media screen and (max-width: 550px) {
+        align-items: flex-start;
+    }
 }
 .invoiceDetail__date{
     grid-area: invoiceDate;
@@ -119,6 +156,9 @@
     justify-self: self-end;
     @include flex(column, flex-start, flex-start);
     gap: 1.3rem 0;
+    @media screen and (max-width: 550px) {
+        justify-self: self-start;
+    }
 }
 .invoiceDetail__items{
     grid-area: items;
@@ -197,8 +237,8 @@
     &_theme_dark{
         background-color: $color-04;
     }
-    @media screen and (max-width: 450px) {
-        padding: 2.4rem 2.4rem 0 2.4rem;
+    @media screen and (max-width: 550px) {
+        padding: 0 2.4rem 0 2.4rem;
         gap: 2.4rem 0;
     }
 
@@ -210,7 +250,7 @@
     grid-template-columns: $template-col-4;
     &-item{
         @include text-light('max');
-        @media screen and (max-width: 450px) {
+        @media screen and (max-width: 550px) {
             display: none;
         }
         &-total{
@@ -252,7 +292,7 @@
             color: $color-07;
         }
     }
-    @media screen and (max-width: 660px) {
+    @media screen and (max-width: 550px) {
         grid-template-columns: min-content auto auto;
         grid-template-rows: auto auto;
         grid-template-areas: "name name total"

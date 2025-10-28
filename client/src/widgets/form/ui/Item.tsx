@@ -79,7 +79,7 @@ function Item({index, removeItem}: {index: number, removeItem: ()=>void}) {
             {
                 items_formFieldsInfo.map(data => <FormField key={data.fieldClass} {...data}/>)
             }
-            <Button style="img" className='removeItem-btn' onClick={removeItem}>
+            <Button style="none" className='removeItem-btn' onClick={removeItem}>
                 <DeleteImgSvg />
             </Button>
         </div>

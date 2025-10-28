@@ -1,0 +1,36 @@
+@import '../../../shared/styles/design-system.scss';
+
+.notificationAboutEmpty{
+    width: 100%;
+    height: 100%;
+    @include flex(column, center, center);
+    gap: 6.7rem 0;
+    @media screen and (max-width: 450px) {
+        gap: 4.2rem 0;        
+    }
+}
+.notificationAboutEmpty__message{
+    @include flex(column, flex-start, center);
+    gap: 2.3rem 0;
+}
+.notificationAboutEmpty__title{
+    transition: all $transition;
+    @include heading-m;
+    &_theme_light{
+        color: $color-08;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+}
+.notificationAboutEmpty__description{
+    transition: all $transition;
+    text-align: center;
+    @include body('min');
+    &_theme_light{
+        color: $color-06;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+}

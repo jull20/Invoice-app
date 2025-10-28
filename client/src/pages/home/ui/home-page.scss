@@ -2,4 +2,18 @@
 
 .invoices{
     @include page-layout;
+    margin-top: clamp(3.2rem, 7.7vw, 8rem);
+    @media screen and (min-width: 1024px) {
+        gap: 6.4rem 0;
+    }
+    @media screen and (min-width: 450px) and (max-width: 1024px) {
+        gap: 5.5rem 0;
+    }
+    @media screen and (max-width: 450px) {
+        gap: 3.2rem 0;
+    }
+
+    &:has(.notificationAboutEmpty){
+        height: 100%;
+    }
 }

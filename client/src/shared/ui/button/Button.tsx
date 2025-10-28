@@ -22,11 +22,8 @@ export function Button({children, style, ...props}: ButtonType){
         case 'chameleon':
             num = 5;
             break;
-        case 'img':
-            num = 6;
-            break;   
         case 'none':
-            num = 0;
+            num = 6;
             break;                     
     }
     if(num!=0) rootClass.push(`button-${num} button-${num}_theme_${theme}`);

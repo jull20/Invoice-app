@@ -3,6 +3,12 @@
 .invoicesControlPanel{
     width: 100%;
     @include flex(row, space-between, center);
+    & .visibility{
+        display: inline;
+        @media screen and (max-width: 500px) {
+            display: none;
+        }
+    }
 
 }
 .invoicesControlPanel__text-block{
@@ -19,6 +25,9 @@
     &_theme_dark{
         color: $color-15;
     }
+    @media screen and (max-width: 500px) {
+        @include heading-m;
+    }
 }
 .invoicesControlPanel__total-invoices{
     @include body('max');
@@ -29,10 +38,22 @@
     &_theme_dark{
         color: $color-05;
     }
-    & .visibility{
-        display: inline;
-        @media screen and (max-width: 450px) {
-            display: none;
+}
+.invoicesControlPanel__button{
+    &-content{
+        @include flex(row, flex-start, center);
+        gap: 0 1.6rem;
+        position: relative;
+        left: 0;
+        @media screen and (max-width: 500px) {
+            gap: 0 .8rem;
         }
+    }
+    &-img{
+        @include flex(row, center, center);
+        width: 3.2rem;
+        height: 3.2rem;
+        background-color: white;
+        border-radius: 100%;
     }
 }

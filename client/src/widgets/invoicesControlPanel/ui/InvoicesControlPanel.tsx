@@ -6,18 +6,16 @@ import "./invoicesControlPanel.scss"
 
 export function InvoicesControlPanel({invoicesQuan, onOpen}: {invoicesQuan: number, onOpen:()=>void}) {
     const theme: ThemeType = getThemeContext();
-
-    // const [selectValue, setSelectValue] = useState<string>('')
-    // const selectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    //     setSelectValue(e.currentTarget.value)
-    // }
-
     return (  
         <div className="invoicesControlPanel">
             <div className="invoicesControlPanel__text-block">
                 <h1 className={`invoicesControlPanel__app-name invoicesControlPanel__app-name_theme_${theme}`}>Invoices</h1>
                 <p className={`invoicesControlPanel__total-invoices invoicesControlPanel__total-invoices_theme_${theme}`}>
-                    <span className="visibility">There are</span> {invoicesQuan} <span className="visibility">total</span> invoices
+                    {
+                        invoicesQuan
+                        ? <> <span className="visibility">There are</span> {invoicesQuan} <span className="visibility">total</span> invoices</>
+                        : <span>No invoices</span>
+                    }
                 </p>
             </div>
             <DropDown 
@@ -29,13 +27,16 @@ export function InvoicesControlPanel({invoicesQuan, onOpen}: {invoicesQuan: numb
                 ]}
             />
             <Button
+                className='newBtn'
                 style="purple"
                 type='button'
                 onClick={onOpen}>
-                <>
-                    <PlusImgSvg/>
-                    <span>New Invoice</span>
-                </>
+                <div className="invoicesControlPanel__button-content">
+                    <div className="invoicesControlPanel__button-img">
+                        <PlusImgSvg/>
+                    </div>
+                    <p className="invoicesControlPanel__button-name">New <span className="visibility">Invoice</span></p>
+                </div>
             </Button>
         </div>
     );

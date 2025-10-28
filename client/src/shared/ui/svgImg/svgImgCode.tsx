@@ -56,7 +56,7 @@ export const MoonImgSvg = () => {
 }
 export const PlusImgSvg = () => {
     return(
-        <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
+        <svg width='11' height='11' xmlns="http://www.w3.org/2000/svg">
             <path d="M6.313 10.023v-3.71h3.71v-2.58h-3.71V.023h-2.58v3.71H.023v2.58h3.71v3.71z" fill="#7C5DFA" fillRule="nonzero"/>
         </svg>
     )
@@ -68,10 +68,3 @@ export const CircleSvg = () => {
         </svg> 
     )
 }
-// export const LogoImgSvg = () => {
-//     return(
-//         <svg xmlns="http://www.w3.org/2000/svg" >
-//             <path fill="#FFF" fillRule="evenodd" d="M20.513 0C24.965 2.309 28 6.91 28 12.21 28 19.826 21.732 26 14 26S0 19.826 0 12.21C0 6.91 3.035 2.309 7.487 0L14 12.9z"/>
-//         </svg>
-//     )
-// }

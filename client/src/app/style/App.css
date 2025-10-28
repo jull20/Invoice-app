@@ -52,6 +52,9 @@ html {
   flex-basis: 100%;
   flex-grow: 0;
 }
+.main:has(.modal[data-visible=true]) {
+  overflow-y: hidden;
+}
 @media screen and (orientation: landscape) {
   .main {
     height: 100%;

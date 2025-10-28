@@ -61,6 +61,71 @@ export class InvoicesService {
       return newInvoice;
   }
   getAll(){
+    if(this.invoicesStorage.length === 0){
+      const test: InvoiceType = {
+        id: "SC7584",
+        status: 'draft',
+        billFrom: {
+          street: "Альпийский переулок",
+          city: "Санкт-Петербург",
+          postCode: "192286",
+          country: "Россия"
+        },
+        billTo: {
+          name: "Test Name",
+          email: "qwe@mail.ru",
+          street: "Альпийский переулок",
+          city: "Санкт-Петербург",
+          postCode: "192286",
+          country: "Россия"
+        },
+        invoiceDate: "2025-10-17",
+        paymentTerms: "14",
+        paymentDue: "Fri Oct 31 2025",
+        projectDescription: "Test Description",
+        amountDue: 990,
+        items: [
+          {
+            id: 1,
+            name: "Test Item 1",
+            quantity: 12,
+            price: 12,
+            total: 144
+          },
+          {
+            id: 2,
+            name: "Test Item 2",
+            quantity: 13,
+            price: 13,
+            total: 169
+          },
+          {
+            id: 3,
+            name: "Test Item 3",
+            quantity: 14,
+            price: 14,
+            total: 196
+          },
+          {
+            id: 4,
+            name: "Test Item 4",
+            quantity: 15,
+            price: 15,
+            total: 225
+          },
+          {
+            id: 5,
+            name: "Test Item 5",
+            quantity: 16,
+            price: 16,
+            total: 256
+          }
+        ]
+    }
+      for(let i=0; i<10; i++){
+        this.invoicesStorage.push(test);
+      }
+    }
     // const invoices: AbbreviatedInvoiceType[] = [];
     // this.invoicesStorage.forEach(invoice => {
     //     let abbreviatedInvoice = {
@@ -70,7 +135,7 @@ export class InvoicesService {
     //     invoices.push(abbreviatedInvoice);
     // })
     // return invoices;
-    return this.invoicesStorage
+    return this.invoicesStorage;
   }
   getOne(id: string): InvoiceType | undefined{
     return this.invoicesStorage.find(invoice => invoice.id === id);

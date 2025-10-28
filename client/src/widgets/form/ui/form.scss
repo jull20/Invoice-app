@@ -11,7 +11,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-
 fieldset{
     width: 100%;
     border: none;
@@ -54,6 +53,7 @@ fieldset{
 
 }
 .invoiceForm__controlBtn{
+    // @include flex(row, )
     position: sticky;
     left: 0;
     bottom: 0;

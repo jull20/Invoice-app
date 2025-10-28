@@ -12,7 +12,6 @@ html{
 .root{
     width: 100vw;
     height: 100vh;
-    // min-height: 100vh;
     overflow: hidden;
     
     &_theme_light{
@@ -32,6 +31,9 @@ html{
 }
 .main{
     overflow-y: auto;
+    &:has(.modal[data-visible = true]){
+        overflow-y: hidden;
+    }
     position: relative;
     @include flex(column, flex-start, center);
     flex-basis: 100%;

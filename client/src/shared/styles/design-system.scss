@@ -31,9 +31,9 @@ $color-25: #FF9797;
 $shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
 
 $transition: 500ms;
-// $template-col-3: 2fr  2fr;
-$template-col-4: 14fr 2fr 6fr 6fr;
+$template-col-4: 12fr 2fr 6fr 6fr;
 $template-col-5: 13fr 3fr 6fr 4fr 1fr;
+$pageLayout-padding: clamp(2.4rem, 6vw, 8rem);
 
 $bold: 700;
 $medium: 500;
@@ -85,14 +85,13 @@ $medium: 500;
 @mixin page-layout{
     width: 100%;
     height: auto;
-    padding: 0 clamp(2.4rem, 6vw, 8rem);
+    padding: 0 $pageLayout-padding;
     @include flex(column, flex-start, center);
-    margin-top: clamp(3.6rem, 5.7vh, 6.5rem);
+    margin-bottom: clamp(3.6rem, 4.7vh, 6.5rem);
     @media screen and (min-width: 1024px) {
         @media screen and (orientation: landscape) {
-            margin-top: 8rem;
+            width: 62vw;
         }
-        width: 62vw;
         padding: 0;
         max-width: 73rem;
     }

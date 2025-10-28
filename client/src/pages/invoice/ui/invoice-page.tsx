@@ -44,9 +44,9 @@ export function InvoicePage() {
         <section className="invoiceDetail">
             <div className="invoiceDetail__backBtn">
                 <Button type='button' style="none" onClick={() => navigate('/')}>
-                    <div>
+                    <div className="invoiceDetail__backBtn-content-wrapper">
                         <ArrowLeftImgSvg/>
-                        Go Back
+                        <span className={`invoiceDetail__backBtn-content-name invoiceDetail__backBtn-content-name_theme_${theme}`}>Go Back</span>
                     </div>
                 </Button>
             </div>

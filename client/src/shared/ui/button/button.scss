@@ -10,6 +10,9 @@
     @include heading-s('min');
     transition: all $transition, filter 300ms;
 }
+.newBtn{
+    padding: 0 1.8rem 0 .8rem;
+}
 .button-1{ // purple button
     background-color: $color-01;
     color: $color-15;
@@ -59,7 +62,6 @@
     }
 }
 .button-5{ // chameleon; a light and dark button in a light and dark theme, respectively
-    
     &_theme_light{
         background-color: $color-17;
         color: $color-07;

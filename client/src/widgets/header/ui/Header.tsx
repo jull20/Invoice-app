@@ -13,6 +13,7 @@ export function Header() {
             <Logo/>
             <div className="header__btn-avatar-wrapper">
                 <Button
+                    style="none"
                     className='changeTheme-btn'
                     onClick={() => themeContext.changeTheme(themeContext.theme)}
                 >
