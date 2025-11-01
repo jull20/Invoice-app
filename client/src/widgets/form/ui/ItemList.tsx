@@ -1,10 +1,11 @@
 import { Button, TableHeader } from "../../../shared/ui";
 import Item from "./Item";
 import { FieldArray } from "formik";
-import type { ValuesType } from "./FormTypes";
 import './itemList.scss'
+import type { FormType } from "../../../shared/types";
 
-export function ItemList({values}: {values: ValuesType}) {
+export function ItemList({values}: {values: FormType}) {
+    // console.log(values)
     return (  
         <div className="itemList">
             <TableHeader className="itemList__table-header"/>

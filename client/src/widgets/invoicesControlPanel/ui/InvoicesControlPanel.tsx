@@ -1,5 +1,5 @@
-import { getThemeContext } from "../../../shared/api";
-import type { ThemeType } from "../../../shared/types/ThemeTypes";
+import { getThemeContext } from "../../../shared/contexts";
+import type { ThemeType } from "../../../shared/types/theme/theme.type";
 import { Button, PlusImgSvg } from "../../../shared/ui";
 import { DropDown } from "../../../shared/ui/dropDown/DropDown";
 import "./invoicesControlPanel.scss"

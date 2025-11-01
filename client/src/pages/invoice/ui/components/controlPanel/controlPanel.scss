@@ -1,0 +1,38 @@
+@import '../../../../../shared/styles/design-system.scss';
+
+.controlPanel{
+    @include block-appearance;
+    width: 100%;
+    @include flex(row, space-between, center);
+    padding: 2rem 3.2rem;
+}
+.controlPanel__status{
+    @include flex(row, flex-start, center);
+    gap: 0 2rem;
+    @media screen and (max-width: 660px) {
+        width: 100%;
+        justify-content: space-between;
+    }
+    &-title{
+        @include body('min');
+        color: $color-24;
+    }
+}
+.controlPanel__controlBtns{
+    @include flex(row, center, center);
+    gap: 0 .8rem;
+    @media screen and (max-width:660px) {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 2.2rem $pageLayout-padding;
+        transition: all $transition;
+        &_theme_light{
+            background-color: $color-15;
+        }
+        &_theme_dark{
+            background-color: $color-03;
+        }
+    }
+}

@@ -32,3 +32,9 @@ export type ItemType = {
 
 export type StatusType = 'pending' | 'paid' | 'draft';
 
+export type InvoiceContextType = {
+    storage: InvoiceType [], 
+    add: (newInvoice: InvoiceType) => void, 
+    remove: (id: string) => void, 
+    edit: (editInvoice: InvoiceType)=>void
+}

@@ -1,0 +1,23 @@
+@import '../../../../../shared/styles/design-system.scss';
+
+
+.invoicePage__name-wrapper{
+    grid-area: invoiceName;
+    @include flex(column, flex-start, flex-start);
+    gap: 1rem 0;
+}
+.invoicePage__id{
+    @include id-appearance;
+    line-height: 2.4rem;
+}
+.invoicePage__projectDescription{
+    transition: all $transition;
+    @include body('min');
+    &_theme_light{
+        color: $color-07;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+}
+

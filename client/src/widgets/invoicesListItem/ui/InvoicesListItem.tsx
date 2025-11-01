@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
-import { getThemeContext } from "../../../shared/api";
 import { ArrowRightImgSvg, Status } from "../../../shared/ui";
 import "./invoicesListItem.scss"
-import type { InvoiceType } from "../../../shared/types/InvoiceType";
+import type { InvoiceType } from "../../../shared/types/invoice/invoice.type";
+import { getThemeContext } from "../../../shared/contexts";
 
 export function InvoicesListItem({invoiceData}: {invoiceData: InvoiceType}) {
     const theme = getThemeContext();

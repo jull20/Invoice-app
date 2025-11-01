@@ -1,8 +1,8 @@
-import { getThemeContext} from "../../api";
-import type { MyModalType } from "./ModalType";
-import "./modal.scss"
+import { getThemeContext } from "../../contexts";
+import type { MyModalType } from "./sideModal.type";
+import "./sideModal.scss"
 
-export function Modal({children, isVisible, onClose}: MyModalType) {
+export function SideModal({children, isVisible, onClose}: MyModalType) {
     const theme = getThemeContext()
 
     return ( 

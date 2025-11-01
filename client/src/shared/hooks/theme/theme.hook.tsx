@@ -1,6 +1,6 @@
 import { useState, type JSX } from "react";
-import type { ThemeType } from "../../shared/types/ThemeTypes";
-import { MoonImgSvg, SunImgSvg } from "../../shared/ui";
+import type { ThemeContextType, ThemeType } from "../../types/theme/theme.type";
+import { MoonImgSvg, SunImgSvg } from "../../ui";
 
 function getCachedTheme(){
   const cachedTheme = sessionStorage.getItem('theme')
@@ -8,7 +8,7 @@ function getCachedTheme(){
   else null;
 }
 
-export function useTheme(): [ThemeType, (currTheme: ThemeType)=>void, (currTheme: ThemeType)=>JSX.Element]
+export function useTheme(): ThemeContextType
 {
   const [theme, setTheme] = useState<ThemeType>(getCachedTheme() ?? 'light');
 
@@ -17,12 +17,12 @@ export function useTheme(): [ThemeType, (currTheme: ThemeType)=>void, (currTheme
     sessionStorage.setItem('theme', newTheme);
     setTheme(newTheme);
   }
-  const changeThemeBtnImg = (currTheme: ThemeType) => {
+  const getThemeImg = () => {
     return(
-      currTheme === 'light'
+      theme === 'light'
       ? <MoonImgSvg />
       : <SunImgSvg />
     )
   }
-  return [theme, changeTheme, changeThemeBtnImg];
+  return {theme, changeTheme, getThemeImg};
 }

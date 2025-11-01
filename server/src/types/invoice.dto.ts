@@ -35,7 +35,7 @@ class Item {
     total: number
 }
 
-export class CreateInvoiceDTO {
+export class FormInvoiceDTO {
     @IsNotEmpty()
     @IsIn(['pending', 'paid', 'draft'], {
         message: 'invalid status value'
@@ -59,3 +59,8 @@ export class CreateInvoiceDTO {
     items: Item[]
 }   
 
+export class InvoiceDTO extends FormInvoiceDTO {
+    id: string;
+    amountDue: number;
+    paymentDue: string;
+}

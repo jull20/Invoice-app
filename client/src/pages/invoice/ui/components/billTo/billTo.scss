@@ -1,0 +1,27 @@
+@import '../../../../../shared/styles/design-system.scss';
+
+.invoicePage__billTo-name-wrapper{
+    grid-area: billTo;
+    @include flex(column, space-between, flex-start);
+    gap: .7rem 0;
+}
+.invoicePage__billTo-title{
+    transition: all $transition;
+    @include body('min');
+    &_theme_light{
+        color: $color-07;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+}
+.invoicePage__name{
+    transition: all $transition;
+    @include heading-s('max');
+    &_theme_light{
+        color: $color-08;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+}

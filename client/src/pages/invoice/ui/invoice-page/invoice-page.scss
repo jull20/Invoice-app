@@ -1,0 +1,84 @@
+@import '../../../../shared/styles/design-system.scss';
+
+@mixin text-light(){
+    transition: all $transition;
+    @include body('max');
+    &_theme_light{
+        color: $color-07;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+}
+
+.invoicePage{
+    @include page-layout; 
+    margin-top: clamp(3.6rem, 6.7vw, 6.5rem);
+    gap: 2.4rem 0;
+    @media screen and (max-width: 660px){
+        margin-bottom: 12rem;
+    }
+}
+.invoicePage__info{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, auto);
+    gap: 3.2rem 0;
+    grid-template-areas: 
+        "invoiceName invoiceName billFrom billFrom"
+        "invoiceDate billTo email ."
+        "paymentDue  billTo email ."
+        "items items items items";
+
+    @include block-appearance;
+    width: 100%;
+    padding: 3.2rem;
+    @media screen and (min-width:1024px){
+        padding: 4.8rem;
+    }
+    @media screen and (max-width:450px){
+        padding: 2.4rem;
+    }
+    @media screen and (max-width: 550px) {
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(5, auto);
+        grid-template-areas: 
+            "invoiceName ."
+            "billFrom    ."
+            "invoiceDate billTo"
+            "paymentDue  billTo"
+            "email       ."
+            "items items ";
+    }
+}
+.invoicePage__billFrom{
+    grid-area: billFrom;
+    @include flex(column, flex-start, flex-end);
+    gap: .3rem 0;
+    @media screen and (max-width: 550px) {
+        align-items: flex-start;
+    }
+}
+.invoicePage__billFrom-street,
+.invoicePage__billTo-street{
+    @include text-light;
+}
+.invoicePage__billFrom-city,
+.invoicePage__billTo-city{
+    @include text-light;
+}
+.invoicePage__billFrom-postCard,
+.invoicePage__billTo-postCard{
+    @include text-light;
+}
+.invoicePage__billFrom-country,
+.invoicePage__billTo-country{
+    @include text-light;
+}
+
+
+
+
+
+
+

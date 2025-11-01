@@ -1,5 +1,5 @@
-import { getThemeContext } from "../../api";
-import type { ThemeType } from "../../types/ThemeTypes";
+import { getThemeContext } from "../../contexts";
+import type { ThemeType } from "../../types/theme/theme.type";
 
 export function TableHeader ({className}: {className: string}) {
     const theme: ThemeType = getThemeContext();

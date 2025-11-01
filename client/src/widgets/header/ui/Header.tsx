@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../../shared/api";
 import { Button } from "../../../shared/ui";
 import { Logo } from "./Logo";
 import "./header.scss"
+import { ThemeContext } from "../../../shared/contexts/theme/theme.context";
 
 export function Header() {
     const themeContext = useContext(ThemeContext);
@@ -17,7 +17,7 @@ export function Header() {
                     className='changeTheme-btn'
                     onClick={() => themeContext.changeTheme(themeContext.theme)}
                 >
-                    {themeContext.changeThemeBtnImg(themeContext.theme)}
+                    {themeContext.getThemeImg()}
                 </Button>
                 <div className="header__avatar-wrapper">
                     <div className="header__avatar-img"><img src="image-avatar.jpg" alt="avatar" /></div>

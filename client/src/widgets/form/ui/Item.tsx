@@ -2,10 +2,10 @@ import "./item.scss"
 import React, { useEffect, useState } from "react";
 import { Button, DeleteImgSvg, FormField } from "../../../shared/ui";
 import { useFormikContext,} from "formik";
-import type { ValuesType } from "./FormTypes";
+import type { FormType } from "../../../shared/types";
 
 function Item({index, removeItem}: {index: number, removeItem: ()=>void}) {
-    const formikContext = useFormikContext<ValuesType>();
+    const formikContext = useFormikContext<FormType>();
     const nameField:    string = `items[${index}].name`,
           quantityField:string = `items[${index}].quantity`,
           priceField:   string = `items[${index}].price`,
@@ -79,7 +79,7 @@ function Item({index, removeItem}: {index: number, removeItem: ()=>void}) {
             {
                 items_formFieldsInfo.map(data => <FormField key={data.fieldClass} {...data}/>)
             }
-            <Button style="none" className='removeItem-btn' onClick={removeItem}>
+            <Button type='button' style="none" className='removeItem-btn' onClick={removeItem}>
                 <DeleteImgSvg />
             </Button>
         </div>

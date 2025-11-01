@@ -1,0 +1,152 @@
+@import '../../../../../shared/styles/design-system.scss';
+
+
+
+@mixin text-light($flag){
+    transition: all $transition;
+    @include body($flag);
+    &_theme_light{
+        color: $color-07;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+}
+@mixin text-bold($flag){
+    transition: all $transition;
+    @include heading-s($flag);
+    &_theme_light{
+        color: $color-08;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+}
+.invoicePage__items{
+    grid-area: items;
+    width: 100%;
+    height: auto;
+}
+.invoicePage__table{
+    display: grid;
+    grid-template-columns: $template-col-4;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+            "table-header table-header table-header table-header"
+            "item         item         item         item        ";
+    border-radius: .8rem .8rem 0 0;
+    gap: 3.2rem 0;
+    padding: 3.2rem 3.2rem 0 3.2rem;
+    transition: all $transition;
+    &_theme_light{
+        background-color: $color-17;
+    }
+    &_theme_dark{
+        background-color: $color-04;
+    }
+    @media screen and (max-width: 550px) {
+        padding: 0 2.4rem 0 2.4rem;
+        gap: 2.4rem 0;
+    }
+
+}
+.invoicePage__table-header{
+    grid-area: table-header;
+    width: 100%;
+    display: grid;
+    grid-template-columns: $template-col-4;
+    &-item{
+        @include text-light('max');
+        @media screen and (max-width: 550px) {
+            display: none;
+        }
+        &-total{
+            justify-self: self-end;
+        }
+        &-price{
+            justify-self: self-end;
+        }
+        &-quantity{
+            justify-self: center;
+        }
+    }
+}
+.invoicePage__table-items{
+    grid-area: item;
+    display: grid;
+    gap: 3.2rem 0;
+    @media screen and (max-width: 450px) {
+        gap: 2.4rem 0;
+    }
+}
+.invoicePage__table-item{
+    display: grid;
+    grid-template-columns: $template-col-4;
+    @include text-bold('min');
+    transition: all $transition;
+    &-total{
+        justify-self: self-end;
+    }
+    &-price{
+        justify-self: self-end;
+    }
+    &-quantity{
+        justify-self: center;
+    }
+    &_theme_light{
+        .invoicePage__table-item-quantity,
+        .invoicePage__table-item-price{
+            color: $color-07;
+        }
+    }
+    @media screen and (max-width: 550px) {
+        grid-template-columns: min-content auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "name name total"
+                             "quantity price total";
+        gap: .8rem .4rem;
+        &-name{
+            justify-self: self-start;
+            grid-area: name;
+        }
+        &-total{
+            align-self: center;
+            justify-self: self-end;
+            grid-area: total;
+        }
+        &-price{
+            justify-self: self-start;
+            grid-area: price;
+            color: $color-06;
+            &::before{
+                content: 'x ';
+            }
+        }
+        &-quantity{
+            grid-area: quantity;
+            justify-self: self-start;
+            color: $color-06;
+        }
+    }
+}
+.invoicePage__amount{
+    @include flex(row, space-between, center);
+    border-radius: 0 0 .8rem .8rem;
+    padding: 2.4rem 3.2rem;
+    transition: all $transition;
+    &_theme_light{
+        background-color: $color-13;
+    }
+    &_theme_dark{
+        background-color: $color-08;
+    }
+    &-title{
+        color: $color-15;
+        @include body('max')
+    }
+    &-value{
+        color: $color-15;
+        @include heading-m;
+        line-height: 3.2rem;
+    }   
+}

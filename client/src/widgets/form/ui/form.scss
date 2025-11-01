@@ -53,7 +53,6 @@ fieldset{
 
 }
 .invoiceForm__controlBtn{
-    // @include flex(row, )
     position: sticky;
     left: 0;
     bottom: 0;
@@ -61,12 +60,11 @@ fieldset{
     padding: 3.2rem;
     border-radius: 0 2rem 2rem 0;
     transition: all $transition;
+    background-color: transparent;
     &_theme_light{
-        background-color: $color-15;
         box-shadow: 0 -7rem 20rem 7rem rgba(0, 0, 0, 0.1);
     }
     &_theme_dark{
-        background-color: $color-12;
         box-shadow: 0 -7rem 11rem 7rem rgba(0, 0, 0, 0.3);
     }    
 }

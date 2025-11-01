@@ -1,5 +1,5 @@
-import { getThemeContext } from "../../api";
-import type { StatusType } from "../../types/InvoiceType";
+import { getThemeContext } from "../../contexts";
+import type { StatusType } from "../../types/invoice/invoice.type";
 import { CircleSvg } from "../svgImg/svgImgCode";
 import "./status.scss"
 

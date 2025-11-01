@@ -1,4 +1,4 @@
-import { getThemeContext } from '../../../shared/api';
+import { getThemeContext } from '../../../shared/contexts';
 import './notificationAboutEmpty.scss'
 
 export function NotificationAboutEmpty() {

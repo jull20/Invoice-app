@@ -1,4 +1,4 @@
-import { getThemeContext } from "../../api";
+import { getThemeContext } from "../../contexts";
 import type { ButtonType } from "./ButtonType";
 import "./button.scss"
 

@@ -1,4 +1,4 @@
-import { getThemeContext } from "../../api";
+import { getThemeContext } from "../../contexts";
 import type { SelectType } from "./SelectType";
 import "./select.scss"
 

@@ -1,0 +1,31 @@
+@import '../../../../../shared/styles/design-system.scss';
+
+.invoicePage__email{
+    grid-area: email;
+    justify-self: self-end;
+    @include flex(column, flex-start, flex-start);
+    gap: 1.3rem 0;
+    @media screen and (max-width: 550px) {
+        justify-self: self-start;
+    }
+}
+.invoicePage__email-title{
+    transition: all $transition;
+    @include body('min');
+    &_theme_light{
+        color: $color-07;
+    }
+    &_theme_dark{
+        color: $color-05;
+    }
+}
+.invoicePage__email-value{
+    transition: all $transition;
+    @include heading-s('max');
+    &_theme_light{
+        color: $color-08;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+}

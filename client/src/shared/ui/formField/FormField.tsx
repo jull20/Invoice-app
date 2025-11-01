@@ -1,6 +1,6 @@
 import { ErrorMessage, Field } from "formik";
-import { getThemeContext } from "../../api";
 import "./formField.scss"
+import { getThemeContext } from "../../contexts";
 
 export function FormField({fieldName, fieldClass, fieldProps, options}: {fieldName:string, fieldClass:string, fieldProps: {[k:string]: any}, options?: {name:string, value:number}[]}) {
     const theme = getThemeContext();

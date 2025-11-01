@@ -1,4 +1,4 @@
-import type { FormType, InvoiceType } from "../../types/InvoiceType";
+import type { FormType, InvoiceType } from "../../types/invoice/invoice.type";
 
 const SERVER_URL = 'http://localhost:8080';
 
@@ -16,7 +16,7 @@ function isInvocieType(value: unknown): value is InvoiceType{
 
 
 export function create(newInvoice: FormType, createInvoice: (invoice: InvoiceType) => void){
-  console.log(newInvoice)
+  // console.log(newInvoice)
   fetch(SERVER_URL + '/api/invoices', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -30,7 +30,27 @@ export function create(newInvoice: FormType, createInvoice: (invoice: InvoiceTyp
     if(isInvocieType(data)){
       createInvoice(data)
     }
-    console.log(data)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+export function createDraft(newDraft: FormType, createInvoice: (draft: InvoiceType) => void){
+  fetch(SERVER_URL + '/api/draft', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newDraft)
+  })
+  .then(response => {
+    if(response.ok) return response.json()
+    else throw new Error(`Create Fail: ${response.status} ${response.statusText}`)
+  })
+  .then(data => {
+    if(isInvocieType(data)){
+      createInvoice(data)
+    }
+    // console.log(data)
   })
   .catch(error => {
     console.log(error)
@@ -44,7 +64,7 @@ export function getAll(getInvoices: (invoices: InvoiceType[]) => void){
     else throw new Error(`GetAll Fail: ${res.status} ${res.statusText}`)
   })
   .then(data => {
-    console.log(data)
+    // console.log(data)
     getInvoices(data)
   })
 }
@@ -56,7 +76,7 @@ export function getOne(invoiceId: string, getInvoice: (invoice: InvoiceType) => 
     else throw new Error(`GetOne Fail: ${res.status} ${res.statusText}`)
   })
   .then(data => {
-    console.log(data)
+    // console.log(data)
     if(isInvocieType(data)){
       getInvoice(data)
     }
@@ -64,3 +84,22 @@ export function getOne(invoiceId: string, getInvoice: (invoice: InvoiceType) => 
   .catch(error => console.log(error))
 }
 
+export function update(editInvoice: InvoiceType, edit: (editInvoice: InvoiceType) => void){
+  fetch(SERVER_URL + '/api/invoices', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(editInvoice)
+  })
+  .then(res => {
+    if(res.ok) return res.json()
+    else throw new Error(`Create Fail: ${res.status} ${res.statusText}`)
+  })
+  .then(data => {
+    if(isInvocieType(data)){
+      edit(data)
+    }
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}

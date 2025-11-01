@@ -1,6 +1,6 @@
 @import '../../../shared/styles/design-system.scss';
 
-.invoices{
+.homePage{
     @include page-layout;
     margin-top: clamp(3.2rem, 7.7vw, 8rem);
     @media screen and (min-width: 1024px) {

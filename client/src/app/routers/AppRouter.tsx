@@ -6,7 +6,6 @@ export function AppRouter(){
     const routes = [
         {path: '/',    Component: HomePage},
         {path: '/:id', Component: InvoicePage},
-        // {path: '/*',   Component: () => <Navigate to='/' replace/>},
     ]
     return(
         <Routes>

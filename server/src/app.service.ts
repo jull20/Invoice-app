@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Res } from '@nestjs/common';
 import { InvoiceType, AbbreviatedInvoiceType, NewInvoiceType, ItemType } from './types/invoice.type';
 import { isNewInvoice } from './types/invoice.typesGuards';
-import { CreateInvoiceDTO } from './types/invoice.dto';
+import { FormInvoiceDTO, InvoiceDTO } from './types/invoice.dto';
+import { DraftDTO } from './types/draft.dto';
 
 @Injectable()
 export class InvoicesService {
@@ -33,14 +34,8 @@ export class InvoicesService {
     items.forEach(item => amount += item.total);
     return amount;
   }
-  // private getAbbreviatedInvoice(fullInvoice: InvoiceType){
-  //   return {
-  //     id: fullInvoice.id,
-      
-  //   }
-  // }
 
-  create(createInvoiceDTO: CreateInvoiceDTO): InvoiceType{
+  create(createInvoiceDTO: FormInvoiceDTO): InvoiceType{
       let newInvoice: InvoiceType;
       const id         = this.generateId(),
             paymentDue = this.countPaymentDue(createInvoiceDTO.invoiceDate, createInvoiceDTO.paymentTerms),
@@ -60,24 +55,44 @@ export class InvoicesService {
       this.invoicesStorage.push(newInvoice);
       return newInvoice;
   }
+  createDraft(draftDTO: DraftDTO): InvoiceType  {
+    let newInvoice: InvoiceType;
+    const id         = this.generateId(),
+          paymentDue = draftDTO.invoiceDate && draftDTO.paymentTerms ? this.countPaymentDue(draftDTO.invoiceDate, draftDTO.paymentTerms) : '',
+          amountDue  = draftDTO.items ? this.countAmountDue(draftDTO.items) : 0;
+    newInvoice = {
+      id:                 id,
+      status:             draftDTO.status,
+      billFrom:           draftDTO.billFrom,
+      billTo:             draftDTO.billTo,
+      invoiceDate:        draftDTO.invoiceDate,
+      paymentTerms:       draftDTO.paymentTerms,
+      paymentDue:         paymentDue,
+      projectDescription: draftDTO.projectDescription,
+      amountDue:          amountDue,
+      items:              draftDTO.items
+    }
+    this.invoicesStorage.push(newInvoice);
+    return newInvoice;
+  }
   getAll(){
     if(this.invoicesStorage.length === 0){
       const test: InvoiceType = {
         id: "SC7584",
         status: 'draft',
         billFrom: {
-          street: "Альпийский переулок",
-          city: "Санкт-Петербург",
-          postCode: "192286",
-          country: "Россия"
+          street: "19 Union Terrace",
+          city: "London",
+          postCode: "E1 3EZ",
+          country: "United Kingdom"
         },
         billTo: {
           name: "Test Name",
           email: "qwe@mail.ru",
-          street: "Альпийский переулок",
-          city: "Санкт-Петербург",
-          postCode: "192286",
-          country: "Россия"
+          street: "19 Union Terrace",
+          city: "London",
+          postCode: "E1 3EZ",
+          country: "United Kingdom"
         },
         invoiceDate: "2025-10-17",
         paymentTerms: "14",
@@ -122,10 +137,11 @@ export class InvoicesService {
           }
         ]
     }
-      for(let i=0; i<10; i++){
+      for(let i=0; i<1; i++){
         this.invoicesStorage.push(test);
       }
     }
+
     // const invoices: AbbreviatedInvoiceType[] = [];
     // this.invoicesStorage.forEach(invoice => {
     //     let abbreviatedInvoice = {
@@ -140,5 +156,18 @@ export class InvoicesService {
   getOne(id: string): InvoiceType | undefined{
     return this.invoicesStorage.find(invoice => invoice.id === id);
   }
+  update(invoiceDTO: InvoiceDTO){
+    const invoiceForEdit: InvoiceType | undefined = this.invoicesStorage.find(invoice => invoice.id === invoiceDTO.id)
+    if(invoiceForEdit){
+      for(let prop in invoiceForEdit){
+        if(invoiceForEdit[prop] !== invoiceDTO[prop]){
+          invoiceForEdit[prop] = invoiceDTO[prop];
+        }
+      }
+    }
+    return invoiceForEdit
+  }
+  delete(){
 
+  }
 }

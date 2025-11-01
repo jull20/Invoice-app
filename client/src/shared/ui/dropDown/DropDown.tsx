@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { getThemeContext } from "../../api";
 import type { DropDownType } from "./DropDownType";
 import { Button } from "../button/Button";
 import "./dropDown.scss"
+import { getThemeContext } from "../../contexts";
 
 export function DropDown({dropDownName, dropDownMenu}: DropDownType) {
     const theme = getThemeContext()
@@ -11,6 +11,7 @@ export function DropDown({dropDownName, dropDownMenu}: DropDownType) {
     return (  
         <div className="dropDown">
             <Button 
+                style="none"
                 className={`dropDown-btn dropDown-btn_${theme}`}
                 data-menu-visible={isVisible}
                 onClick={() => setIsVisible(!isVisible)}

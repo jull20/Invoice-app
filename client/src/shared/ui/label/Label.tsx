@@ -1,7 +1,7 @@
 import { type JSX } from "react";
-import { getThemeContext } from "../../api";
-import type { ThemeType } from "../../types/ThemeTypes";
+import type { ThemeType } from "../../types/theme/theme.type";
 import "./label.scss"
+import { getThemeContext } from "../../contexts";
 
 export function Label({name, children, className=''}: {name:string, children: JSX.Element, className?: string}) {
     const theme: ThemeType = getThemeContext();
