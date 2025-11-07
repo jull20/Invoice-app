@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, Res } from '@nestjs/common';
 import { InvoicesService } from './app.service';
-import { FormInvoiceDTO, InvoiceDTO } from './types/invoice.dto';
+import { FormInvoiceDTO, InvoiceDTO, InvoiceUpdateDTO } from './types/invoice.dto';
 import { DraftDTO } from './types/draft.dto';
 
 @Controller('api')
@@ -19,21 +19,22 @@ export class InvoicesController {
       )
     }
   }
-  @Post('draft') createDraft(@Body() darftDTO: DraftDTO) {
-    console.log(darftDTO);
-    return this.invoiceService.createDraft(darftDTO);
-  }
+  // @Post('draft') createDraft(@Body() darftDTO: DraftDTO) {
+  //   console.log(darftDTO);
+  //   return this.invoiceService.createDraft(darftDTO);
+  // }
   @Get('invoices') getAll() {
     try{
       return this.invoiceService.getAll();
     }catch(error){
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Custom message: BAD_REQUEST'
-        },  
-        HttpStatus.BAD_REQUEST, { cause: error }
-      )
+      console.log(error)
+      // throw new HttpException(
+      //   {
+      //     status: HttpStatus.BAD_REQUEST,
+      //     error: 'Custom message: BAD_REQUEST'
+      //   },  
+      //   HttpStatus.BAD_REQUEST, { cause: error }
+      // )
     }
   }
   @Get('invoices/:id') getOne(@Param('id') id: string) {
@@ -49,22 +50,23 @@ export class InvoicesController {
       )
     }
   }
-  @Put('invoices') update(@Body() invoiceDTO: InvoiceDTO){
+  @Put('invoices') update(@Body() invoiceUpdateDTO: InvoiceUpdateDTO){
     try{
-      return this.invoiceService.update(invoiceDTO);
+      return this.invoiceService.update(invoiceUpdateDTO);
     }catch(error){
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Custom message: BAD_REQUEST'
-        },  
-        HttpStatus.BAD_REQUEST, { cause: error }
-      )
+      console.log(error) 
+      // throw new HttpException(
+      //   {
+      //     status: HttpStatus.BAD_REQUEST,
+      //     error: 'Custom message: BAD_REQUEST'
+      //   },  
+      //   HttpStatus.BAD_REQUEST, { cause: error }
+      // )
     }
   }
-  @Delete('invoices/:id') delete(){
+  @Delete('invoices/:id') delete(@Param('id') id: string){
     try{
-      return this.invoiceService.delete();
+      return this.invoiceService.delete(id);
     }catch(error){
       throw new HttpException(
         {

@@ -1,7 +1,7 @@
-import type { AddressType } from "./address.type";
 import { getThemeContext } from "../../../../../shared/contexts";
+import type { AddressType } from "../../../../../shared/types";
 
-export function Address({className, street, city, postCode, country}: AddressType){
+export function Address({className, street, city, postCode, country}: {className:string} & AddressType){
     const theme = getThemeContext();
     return(
         <div className={className}>

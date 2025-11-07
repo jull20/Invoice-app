@@ -11,12 +11,12 @@
     z-index: 100;
     opacity: 1;
     transition: all $transition;
+    overflow: hidden;
     &[data-visible = false]{
         // opacity: 0;
         // width: 0;
         display: none;
     }
-    overflow-y: auto;
 }
 .modal__content{
     position: relative;
@@ -27,20 +27,12 @@
         border-radius: 0;
     }
     height: 100%;
-    overflow-x: hidden;
-    // padding: clamp(2.4rem, 7vw, 5.6rem);
-    // padding-bottom: 0;
+    overflow: hidden;
     transition: background-color $transition;
-                // scrollbar-color $transition,            
-                // scrollbar-width $transition;
     &_theme_light{
         background-color: $color-15;
-        // scrollbar-color: $color-05 $color-15;
-        // scrollbar-width: 8px;
     }
     &_theme_dark{
         background-color: $color-12;
-        // scrollbar-color: $color-04 $color-12;
-        // scrollbar-width: 8px;
     }
 }

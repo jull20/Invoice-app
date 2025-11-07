@@ -1,9 +1,9 @@
-import type { InvoiceType } from "../../../shared/types/invoice/invoice.type";
+import type { AbbreviatedInvoiceType, InvoiceType } from "../../../shared/types/invoice/invoice.type";
 import { InvoicesListItem } from "../../invoicesListItem/ui/InvoicesListItem";
 import { NotificationAboutEmpty } from "../../notificationAboutEmpty";
 import "./invoicesList.scss"
 
-export function InvoicesList({invoices}: {invoices: InvoiceType[]}) {
+export function InvoicesList({invoices}: {invoices: AbbreviatedInvoiceType[]}) {
     if(invoices.length === 0) return <NotificationAboutEmpty/>
     return (  
         <div className="invoicesList">

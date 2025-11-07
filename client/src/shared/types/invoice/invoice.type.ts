@@ -15,7 +15,7 @@ export type InvoiceType = {
 }
 export type FormType = Omit<InvoiceType, 'id'|'paymentDue'|'amountDue'>
 
-type AddressType = {
+export type AddressType = {
     street: string,
     city: string,
     postCode: string,
@@ -23,7 +23,7 @@ type AddressType = {
 }
 
 export type ItemType = {
-    id: number,
+    id: string,
     name: string, 
     quantity: number,
     price: number,
@@ -32,9 +32,13 @@ export type ItemType = {
 
 export type StatusType = 'pending' | 'paid' | 'draft';
 
+export type AbbreviatedInvoiceType = {
+    name: string
+} & Pick<InvoiceType, 'id'|'status'|'paymentDue'|'amountDue'>
+
 export type InvoiceContextType = {
-    storage: InvoiceType [], 
-    add: (newInvoice: InvoiceType) => void, 
-    remove: (id: string) => void, 
-    edit: (editInvoice: InvoiceType)=>void
+    storage: AbbreviatedInvoiceType [], 
+    addToStorage: (newInvoice: AbbreviatedInvoiceType) => void, 
+    removeFromStorage: (id: string) => void, 
+    editStorage: (editInvoice: AbbreviatedInvoiceType)=>void
 }

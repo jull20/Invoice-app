@@ -1,8 +1,8 @@
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import "./invoice-page.scss"
 import { useEffect, useState } from "react";
-import type { InvoiceType } from "../../../../shared/types/invoice/invoice.type";
-import { getOne } from "../../../../shared/api/fetch/fetch";
+import type { AbbreviatedInvoiceType, InvoiceType } from "../../../../shared/types/invoice/invoice.type";
+import { deleteOne, getOne, update } from "../../../../shared/api/fetch/fetch";
 import { getInvoiceContext, getModalContext, getThemeContext } from "../../../../shared/contexts";
 import { Address, BackButton, ControlPanel, Name, InvoiceDate, PaymentDue, Email, BillTo, TableOfItems } from "../components";
 import { SideModal } from "../../../../shared/ui";
@@ -14,17 +14,38 @@ export function InvoicePage() {
     const {id}           = useParams();
     const {sideModal}    = getModalContext();
     const [invoice, setInvoice] = useState<InvoiceType>(emptyInvoice);
-    // const {storage, remove, edit} = getInvoiceContext();
+    const {removeFromStorage, editStorage} = getInvoiceContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(id) getOne(id, (invoice) => setInvoice(invoice))
     }, [])
+
+    const handleEdit = (invoice: InvoiceType) => {
+        editStorage({
+            name:       invoice.billTo.name,
+            id:         invoice.id,
+            status:     invoice.status,
+            paymentDue: invoice.paymentDue,
+            amountDue:  invoice.amountDue,
+        });
+        setInvoice(invoice);
+    }
+    const handleRemove = () => {
+        deleteOne(invoice.id, removeFromStorage);
+        navigate('/')
+    }
+    const handleEditStatus = () => {
+        update({ id: invoice.id, status: "paid" }, handleEdit);
+    }
     return (
         <section className="invoicePage" id="thisPlace">
             <BackButton />
             <ControlPanel 
                 status={invoice.status ?? 'pending'}
-                handleEdit={sideModal.open}
+                edit={sideModal.open}
+                remove={handleRemove}
+                markAsPaid={handleEditStatus}
             />
             <div className={`invoicePage__info invoicePage__info_theme_${theme}`}>
                 <Name 
@@ -64,7 +85,7 @@ export function InvoicePage() {
                     <InvoiceForm 
                         type="edit" 
                         invoice={invoice} 
-                        editInvoice={(invoice: InvoiceType) => setInvoice(invoice)} 
+                        editInvoice={handleEdit} 
                         closeModal={sideModal.close}/> 
                 </SideModal>
             }

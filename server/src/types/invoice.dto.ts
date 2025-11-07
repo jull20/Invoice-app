@@ -23,8 +23,8 @@ class Address {
     country: string
 }
 class Item {
-    @IsNumber() @IsNotEmpty()
-    id: number
+    // @IsString() @IsNotEmpty()
+    // id: string
     @IsString() @IsNotEmpty()
     name: string
     @IsNumber() @IsNotEmpty()
@@ -63,4 +63,10 @@ export class InvoiceDTO extends FormInvoiceDTO {
     id: string;
     amountDue: number;
     paymentDue: string;
+}
+
+
+export class InvoiceUpdateDTO{
+    @IsString()
+    id: string
 }

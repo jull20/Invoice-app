@@ -22,16 +22,28 @@ fieldset{
     gap: 4.6rem 0;
     padding-top: $padding-size;
 }
-.invoiceForm_form-type{
+.invoiceForm_form-title{
     @include heading-m;
     line-height: 3.2rem;
-    flex: 0 0 3.2rem;
+    flex-grow: 0;
+    width: 100%;
+    padding: 0 $padding-size;
+    transition: all $transition;
+    &_theme_light{
+        color: $color-08;
+    }
+    &_theme_dark{
+        color: $color-15;
+    }
+    & span{
+        color: $color-06;
+    }
 }
 .invoiceForm__form{
     width: 100%;
-    height: 0;
     @include flex(column, flex-start, center);
     flex-grow: 1;
+    height: 0;
     gap: 1rem 0;
 
     transition: scrollbar-color $transition,            
@@ -59,7 +71,11 @@ fieldset{
     width: 100%;
     padding: 3.2rem;
     border-radius: 0 2rem 2rem 0;
-    transition: all $transition;
+    @media screen and (max-width: 450px) {
+        padding: 2.4rem;
+        border-radius: 0 0 0 0;
+    }
+    transition: all 200ms;
     background-color: transparent;
     &_theme_light{
         box-shadow: 0 -7rem 20rem 7rem rgba(0, 0, 0, 0.1);
@@ -67,6 +83,9 @@ fieldset{
     &_theme_dark{
         box-shadow: 0 -7rem 11rem 7rem rgba(0, 0, 0, 0.3);
     }    
+    &[data-shadow-visible = false]{
+        box-shadow: none;
+    }
 }
 .invoiceForm__bill-from{
     display: grid;

@@ -22,7 +22,7 @@ type AddressType = {
 }
 
 export type ItemType = {
-    id: number,
+    id?: string,
     name: string, 
     quantity: number,
     price: number,
@@ -34,4 +34,5 @@ export type StatusType = 'pending' | 'paid' | 'draft';
 export type AbbreviatedInvoiceType = {
     name: string
 } & Pick<InvoiceType, 'id'|'status'|'paymentDue'|'amountDue'>
+
 export type NewInvoiceType = Omit<InvoiceType, 'id'>;

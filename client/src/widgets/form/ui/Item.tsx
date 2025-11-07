@@ -10,8 +10,11 @@ function Item({index, removeItem}: {index: number, removeItem: ()=>void}) {
           quantityField:string = `items[${index}].quantity`,
           priceField:   string = `items[${index}].price`,
           totalField:   string = `items[${index}].total`;
-
-    const [total, setTotal] = useState({quan: 0, price: 0})
+          
+    const [total, setTotal] = useState({
+        quan:  formikContext.initialValues.items[index]?.quantity ?? 0,
+        price: formikContext.initialValues.items[index]?.price ?? 0    
+    })
 
     const changeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTotal({...total, quan: parseFloat(e.currentTarget.value)})

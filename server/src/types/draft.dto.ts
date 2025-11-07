@@ -22,7 +22,7 @@ class Address {
     country: string
 }
 class Item {
-    @IsNumber()
+    @IsString()
     id: number
     @IsString()
     name: string

@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 import type { InvoiceContextType, InvoiceType } from "../../types";
 import { getAll } from "../../api/fetch/fetch";
-import { emptyInvoice } from "../../constants/emptyInvoice.constant";
+import type { AbbreviatedInvoiceType } from "../../types/invoice/invoice.type";
 
 export function useInvoice(): InvoiceContextType {
-    const [storage, setStorage] = useState<InvoiceType[]>([]); // сюда приходят сокращенные данные
-    // const [currInvoice, setCurrInvoice] = useState<InvoiceType>(emptyInvoice)
+    const [storage, setStorage] = useState<AbbreviatedInvoiceType[]>([]); // сюда приходят сокращенные данные
     useEffect(() => {
-        console.log('')
         getAll((invoicesArr) => setStorage(invoicesArr))
     }, [])
     
-    const add = (newInvoice: InvoiceType) => {
+    const addToStorage = (newInvoice: AbbreviatedInvoiceType) => {
         setStorage([...storage, newInvoice]);
     }
-    const remove = (id: string) => {
+    const removeFromStorage = (id: string) => {
         setStorage(storage.filter((invoice) => invoice.id !== id))
     }
-    const edit = (updateInvoice: InvoiceType) => {
-        const kek =  storage.find((invoice) => invoice.id !== updateInvoice.id)
-        for(let prop in kek){
-
+    const editStorage = (updateInvoice: AbbreviatedInvoiceType) => {
+        const invoiceForEdit = storage.find((invoice) => invoice.id === updateInvoice.id);
+        let prop: keyof AbbreviatedInvoiceType;
+        if(invoiceForEdit){
+            for(prop in invoiceForEdit){
+                if(invoiceForEdit[prop] !== updateInvoice[prop]){
+                    Object.defineProperty(invoiceForEdit, prop, {value: updateInvoice[prop]})
+                }
+            }
         }
-        // kek.push(updateInvoice)
-        // setStorage(kek)
     }
-    return {storage, add, remove, edit};
+    return {storage, addToStorage, removeFromStorage, editStorage};
 } 

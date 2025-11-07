@@ -6,7 +6,7 @@ import { SideModal } from "../../../shared/ui";
 import { getInvoiceContext, getModalContext } from "../../../shared/contexts";
 
 export function HomePage(){
-    const {storage, add} = getInvoiceContext();
+    const {storage, addToStorage} = getInvoiceContext();
     const {sideModal} = getModalContext();
     return(
         <section className="homePage">
@@ -17,7 +17,7 @@ export function HomePage(){
             {
                 sideModal.isVisible &&
                 <SideModal isVisible={sideModal.isVisible} onClose={sideModal.close}>
-                    <InvoiceForm type="new" addInvoice={add} closeModal={sideModal.close}/>
+                    <InvoiceForm type="new" addInvoice={addToStorage} closeModal={sideModal.close}/>
                 </SideModal>
             }
         </section>
