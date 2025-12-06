@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { InvoiceContextType, InvoiceType } from "../../types";
+import type { InvoiceContextType } from "../../types";
 import { getAll } from "../../api/fetch/fetch";
 import type { AbbreviatedInvoiceType } from "../../types/invoice/invoice.type";
 

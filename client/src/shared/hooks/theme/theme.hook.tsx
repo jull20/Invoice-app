@@ -1,4 +1,4 @@
-import { useState, type JSX } from "react";
+import { useState } from "react";
 import type { ThemeContextType, ThemeType } from "../../types/theme/theme.type";
 import { MoonImgSvg, SunImgSvg } from "../../ui";
 

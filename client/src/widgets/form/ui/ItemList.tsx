@@ -17,7 +17,7 @@ export function ItemList({values}: {values: FormType}) {
                         {
                             values.items.map((item, index) => (
                                 <Item 
-                                    key={index}
+                                    key={item.id}
                                     index={index}
                                     removeItem={() => arrayHelpers.remove(index)}
                                 />

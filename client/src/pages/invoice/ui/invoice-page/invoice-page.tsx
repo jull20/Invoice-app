@@ -1,7 +1,7 @@
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import "./invoice-page.scss"
 import { useEffect, useState } from "react";
-import type { AbbreviatedInvoiceType, InvoiceType } from "../../../../shared/types/invoice/invoice.type";
+import type { InvoiceType } from "../../../../shared/types/invoice/invoice.type";
 import { deleteOne, getOne, update } from "../../../../shared/api/fetch/fetch";
 import { getInvoiceContext, getModalContext, getThemeContext } from "../../../../shared/contexts";
 import { Address, BackButton, ControlPanel, Name, InvoiceDate, PaymentDue, Email, BillTo, TableOfItems } from "../components";

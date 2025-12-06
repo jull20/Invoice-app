@@ -1,4 +1,4 @@
-import type { AbbreviatedInvoiceType, InvoiceType } from "../../../shared/types/invoice/invoice.type";
+import type { AbbreviatedInvoiceType } from "../../../shared/types/invoice/invoice.type";
 import { InvoicesListItem } from "../../invoicesListItem/ui/InvoicesListItem";
 import { NotificationAboutEmpty } from "../../notificationAboutEmpty";
 import "./invoicesList.scss"
