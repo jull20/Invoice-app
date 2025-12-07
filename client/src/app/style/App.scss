@@ -31,9 +31,9 @@ html{
 }
 .main{
     overflow-y: auto;
-    &:has(.modal[data-visible = true]){
-        overflow-y: hidden;
-    }
+    // &:has(.modal[data-visible = true]){
+    //     overflow-y: hidden;
+    // }
     position: relative;
     @include flex(column, flex-start, center);
     flex-basis: 100%;
