@@ -2,8 +2,6 @@
 
 .modal{
     position: fixed;
-    top: 0;
-    left: 10.4rem;
     bottom: 0;
     right: 0;
     width: auto;
@@ -11,11 +9,16 @@
     z-index: 100;
     opacity: 1;
     transition: all $transition;
-    // overflow: hidden;
     &[data-visible = false]{
-        // opacity: 0;
-        // width: 0;
         display: none;
+    }
+    @media screen and (orientation: landscape){
+        top: 0;
+        left: 10.4rem;
+    }
+    @media screen and (orientation: portrait){
+        top: clamp(7rem, 8vh, 8rem);
+        left: 0;
     }
 }
 .modal__content{
